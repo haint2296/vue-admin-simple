@@ -1,0 +1,4 @@
+./src/share/api/generated/endpoints
+./src/share/api/generated/models
+./src/share/api/generated/types
+./public/mockServiceWorker.js
