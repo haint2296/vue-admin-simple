@@ -1,1 +1,3 @@
 @import 'tailwindcss';
+@import 'tailwindcss-primeui';
+@source '../../../src';

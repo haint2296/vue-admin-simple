@@ -7,7 +7,28 @@ import { bootstrap } from './bootstrap'
 import router from './providers/routers'
 //** css */
 import '@/shared/styles/main.css'
+import 'primeicons/primeicons.css'
+
+import PrimeVue from 'primevue/config'
+import Aura from '@primeuix/themes/aura'
+import Button from 'primevue/button'
 
 bootstrap().then(() => {
-  createApp(App).use(router).use(VueQueryPlugin).mount('#ctx-app')
+  const app = createApp(App)
+
+  app
+    .use(router)
+    .use(VueQueryPlugin)
+    .use(PrimeVue, {
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.dark',
+        },
+      },
+    })
+
+  app.component('Button', Button)
+
+  app.mount('#ctx-app')
 })

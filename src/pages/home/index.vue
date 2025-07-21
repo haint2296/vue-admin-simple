@@ -16,7 +16,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in data" :key="product.id">
+          <tr
+            v-for="product in data"
+            :key="product.id"
+          >
             <td>{{ product.id }}</td>
             <td>{{ product.name }}</td>
             <td>{{ product.description }}</td>
