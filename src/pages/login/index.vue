@@ -86,7 +86,7 @@
     </div>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import Checkbox from 'primevue/checkbox'
 import InputText from 'primevue/inputtext'
 

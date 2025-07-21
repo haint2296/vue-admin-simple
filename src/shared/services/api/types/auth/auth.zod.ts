@@ -11,7 +11,7 @@ import { z as zod } from 'zod'
  */
 export const postLoginBody = zod.object({
   email: zod.email().describe("The user's email address"),
-  password: zod.describe("The user's password"),
+  password: zod.string().describe("The user's password"),
 })
 
 export const postLoginResponse = zod.object({

@@ -40,7 +40,6 @@ paths:
                   description: The user's email address
                 password:
                   type: string
-                  format: password
                   description: The user's password
               required:
                 - email
