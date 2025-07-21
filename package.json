@@ -14,11 +14,17 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@primeuix/themes": "^1.2.1",
     "@tailwindcss/vite": "^4.1.11",
     "@tanstack/vue-query": "^5.83.0",
     "axios": "^1.10.0",
+    "clsx": "^2.1.1",
     "pinia": "^3.0.3",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.3.6",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
+    "tailwindcss-primeui": "^0.6.1",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",
     "zod": "^4.0.5"
@@ -40,6 +46,7 @@
     "msw": "^2.10.4",
     "orval": "^7.10.0",
     "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.14",
     "typescript": "~5.8.3",
     "vite": "^7.0.4",
     "vue-eslint-parser": "^10.2.0",
