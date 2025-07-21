@@ -35,4 +35,6 @@
 import { useGetProducts } from '@/shared/services/api'
 
 const { data, error, refetch, isFetching } = useGetProducts()
+console.log(data.value)
+console.log(error.value)
 </script>

@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     root: 'src/app',
-    base: isDev ? '/' : '/vue-admin-simple',
+    base: isDev ? '/' : '/vue-admin-simple/',
     css: {
       devSourcemap: true,
     },

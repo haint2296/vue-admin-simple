@@ -3,7 +3,7 @@
 import type { AxiosRequestConfig } from 'axios'
 import Axios, { AxiosError } from 'axios'
 
-const baseURL = import.meta.env.DEV ? '/' : '/vue-admin-simple'
+const baseURL = import.meta.env.DEV ? '/' : '/vue-admin-simple/'
 
 export const axiosInstance = Axios.create({ baseURL })
 
