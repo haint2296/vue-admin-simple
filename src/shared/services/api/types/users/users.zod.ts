@@ -7,9 +7,9 @@
 import { z as zod } from 'zod'
 
 /**
- * @summary Get all users
+ * @summary Get current user
  */
-export const getUsersResponseItem = zod.object({
+export const getMeResponse = zod.object({
   id: zod.uuid().optional().describe('The unique identifier for the user'),
   name: zod.string().optional().describe('The name of the user'),
   email: zod.email().optional().describe('The email address of the user'),
@@ -29,4 +29,3 @@ export const getUsersResponseItem = zod.object({
   status: zod.enum(['active', 'inactive', 'pending']).optional().describe('The status of the user'),
   createdAt: zod.iso.datetime({}).optional().describe('The date and time the user was created'),
 })
-export const getUsersResponse = zod.array(getUsersResponseItem)

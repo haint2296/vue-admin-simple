@@ -15,5 +15,5 @@ export const postLoginBody = zod.object({
 })
 
 export const postLoginResponse = zod.object({
-  token: zod.string().optional(),
+  token: zod.string(),
 })

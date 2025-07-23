@@ -8,20 +8,6 @@ servers:
   - url: https://api.admin-simple.com
     description: Production server
 paths:
-  /users:
-    get:
-      tags:
-        - users
-      summary: Get all users
-      responses:
-        '200':
-          description: A list of users
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
   /login:
     post:
       tags:
@@ -54,6 +40,42 @@ paths:
                 properties:
                   token:
                     type: string
+                required:
+                  - token
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The error message
+  /me:
+    get:
+      tags:
+        - users
+      summary: Get current user
+      security:
+        - session: []
+      responses:
+        '200':
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
         '401':
           description: Unauthorized
           content:
@@ -79,9 +101,16 @@ paths:
       tags:
         - products
       summary: Get all products
+      security:
+        - session: []
       responses:
         '200':
           description: A list of products
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: session_id=xxxxxxxxxxxxxxx; Path=/; HttpOnly; SameSite=Lax; Secure
           content:
             application/json:
               schema:
@@ -90,6 +119,11 @@ paths:
                   $ref: '#/components/schemas/Product'
 
 components:
+  securitySchemes:
+    session:
+      type: apiKey
+      in: cookie
+      name: session_id
   schemas:
     User:
       type: object

@@ -11,12 +11,12 @@ import { HttpResponse, delay, http } from 'msw'
 import type { PostLogin200, PostLogin401, PostLogin500 } from '../../models'
 
 export const getPostLoginResponseMock = (overrideResponse: Partial<PostLogin200> = {}): PostLogin200 => ({
-  token: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
+  token: faker.string.alpha({ length: { min: 10, max: 20 } }),
   ...overrideResponse,
 })
 
 export const getPostLoginResponseMock200 = (overrideResponse: Partial<PostLogin200> = {}): PostLogin200 => ({
-  token: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
+  token: faker.string.alpha({ length: { min: 10, max: 20 } }),
   ...overrideResponse,
 })
 

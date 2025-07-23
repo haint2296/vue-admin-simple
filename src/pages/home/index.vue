@@ -40,14 +40,23 @@
       variant="primary"
       @click="refetch()"
     />
+
+    <div>
+      <h1>Me</h1>
+      <pre>{{ me }}</pre>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useGetProducts } from '@/shared/services/api'
+import { useGetMe, useGetProducts } from '@/shared/services/api'
 import { Button } from 'primevue'
 
 const { data, error, refetch, isFetching } = useGetProducts()
 console.log(data.value)
 console.log(error.value)
+
+const { data: me } = useGetMe()
 </script>
+
+<script lang="ts"></script>

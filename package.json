@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "deploy": "gh-pages -d dist"
+    "deploy:gp": "vue-tsc -b && vite build && cp dist/index.html dist/404.html && gh-pages -d dist"
   },
   "dependencies": {
     "@primeuix/themes": "^1.2.1",

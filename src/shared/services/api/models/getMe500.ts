@@ -5,6 +5,7 @@
  * OpenAPI spec version: 1.0.0
  */
 
-export type PostLogin200 = {
-  token: string
+export type GetMe500 = {
+  /** The error message */
+  message?: string
 }

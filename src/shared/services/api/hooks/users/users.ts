@@ -16,51 +16,54 @@ import type {
 
 import { unref } from 'vue'
 
-import type { User } from '../../models'
+import type { GetMe401, GetMe500, User } from '../../models'
 
 import { request } from '../../../../lib/axios/index'
 
 type SecondParameter<T extends (...args: never) => unknown> = Parameters<T>[1]
 
 /**
- * @summary Get all users
+ * @summary Get current user
  */
-export const getUsers = (options?: SecondParameter<typeof request>, signal?: AbortSignal) => {
-  return request<User[]>({ url: `/users`, method: 'GET', signal }, options)
+export const getMe = (options?: SecondParameter<typeof request>, signal?: AbortSignal) => {
+  return request<User>({ url: `/me`, method: 'GET', signal }, options)
 }
 
-export const getGetUsersQueryKey = () => {
-  return ['users'] as const
+export const getGetMeQueryKey = () => {
+  return ['me'] as const
 }
 
-export const getGetUsersQueryOptions = <TData = Awaited<ReturnType<typeof getUsers>>, TError = unknown>(options?: {
-  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData>>
+export const getGetMeQueryOptions = <
+  TData = Awaited<ReturnType<typeof getMe>>,
+  TError = GetMe401 | GetMe500,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>>
   request?: SecondParameter<typeof request>
 }) => {
   const { query: queryOptions, request: requestOptions } = options ?? {}
 
-  const queryKey = getGetUsersQueryKey()
+  const queryKey = getGetMeQueryKey()
 
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof getUsers>>> = ({ signal }) => getUsers(requestOptions, signal)
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getMe>>> = ({ signal }) => getMe(requestOptions, signal)
 
-  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData>
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>
 }
 
-export type GetUsersQueryResult = NonNullable<Awaited<ReturnType<typeof getUsers>>>
-export type GetUsersQueryError = unknown
+export type GetMeQueryResult = NonNullable<Awaited<ReturnType<typeof getMe>>>
+export type GetMeQueryError = GetMe401 | GetMe500
 
 /**
- * @summary Get all users
+ * @summary Get current user
  */
 
-export function useGetUsers<TData = Awaited<ReturnType<typeof getUsers>>, TError = unknown>(
+export function useGetMe<TData = Awaited<ReturnType<typeof getMe>>, TError = GetMe401 | GetMe500>(
   options?: {
-    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getUsers>>, TError, TData>>
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>>
     request?: SecondParameter<typeof request>
   },
   queryClient?: QueryClient,
 ): UseQueryReturnType<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
-  const queryOptions = getGetUsersQueryOptions(options)
+  const queryOptions = getGetMeQueryOptions(options)
 
   const query = useQuery(queryOptions, queryClient) as UseQueryReturnType<TData, TError> & {
     queryKey: DataTag<QueryKey, TData, TError>
