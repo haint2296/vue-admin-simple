@@ -30,12 +30,22 @@
         </tbody>
       </table>
     </div>
-    <button @click="refetch()">Refetch</button>
+    <Button
+      :disabled="false"
+      icon="pi pi-refresh"
+      label="Refetch"
+      :loading="isFetching"
+      size="small"
+      type="button"
+      variant="primary"
+      @click="refetch()"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { useGetProducts } from '@/shared/services/api'
+import { Button } from 'primevue'
 
 const { data, error, refetch, isFetching } = useGetProducts()
 console.log(data.value)

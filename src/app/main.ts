@@ -9,13 +9,11 @@ import router from './providers/routers'
 import '@/shared/styles/main.css'
 import 'primeicons/primeicons.css'
 
-import PrimeVue from 'primevue/config'
 import Aura from '@primeuix/themes/aura'
-import Button from 'primevue/button'
+import PrimeVue from 'primevue/config'
 
 bootstrap().then(() => {
   const app = createApp(App)
-
   app
     .use(router)
     .use(VueQueryPlugin)
@@ -27,8 +25,6 @@ bootstrap().then(() => {
         },
       },
     })
-
-  app.component('Button', Button)
 
   app.mount('#ctx-app')
 })
