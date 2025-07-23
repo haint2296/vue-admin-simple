@@ -50,10 +50,6 @@ const form = reactive({
           class="w-full rounded-lg shadow-sm"
           placeholder="Email address"
           type="email"
-          autocapitalize="off"
-          autocomplete="off"
-          autocorrect="off"
-          spellcheck="false"
           v-model="form.email"
         />
       </div>

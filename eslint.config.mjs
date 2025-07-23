@@ -43,7 +43,6 @@ export default defineConfig([
     rules: {
       ...pluginVue.configs['flat/recommended'].rules,
       ...pluginTs.configs.recommended.rules,
-      'vue/attributes-order': ['error', { alphabetical: true }],
     },
   },
 ])
