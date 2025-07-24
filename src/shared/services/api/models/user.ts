@@ -6,27 +6,26 @@
  */
 import type { UserAddress } from './userAddress'
 import type { UserGender } from './userGender'
-import type { UserRole } from './userRole'
+import type { UserRoles } from './userRoles'
 import type { UserStatus } from './userStatus'
 
 export interface User {
   /** The unique identifier for the user */
-  id?: string
+  id: string
   /** The name of the user */
-  name?: string
+  name: string
   /** The email address of the user */
-  email?: string
-  address?: UserAddress
+  email: string
+  address: UserAddress
   /** The phone number of the user */
-  phone?: string
+  phone: string
   /** The website of the user */
-  website?: string
+  website: string
   /** The gender of the user */
-  gender?: UserGender
-  /** The role of the user */
-  role?: UserRole
+  gender: UserGender
+  roles: UserRoles
   /** The status of the user */
-  status?: UserStatus
+  status: UserStatus
   /** The date and time the user was created */
-  createdAt?: string
+  created_at: string
 }

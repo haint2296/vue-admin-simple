@@ -30,5 +30,5 @@ export interface Product {
   tags: string[]
   attributes: ProductAttributes
   /** The date and time the product was created */
-  createdAt: string
+  createdAt?: string
 }

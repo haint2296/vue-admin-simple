@@ -43,20 +43,20 @@
 
     <div>
       <h1>Me</h1>
-      <pre>{{ me }}</pre>
+      <pre>{{ sessionStore.user?.name }}</pre>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useGetMe, useGetProducts } from '@/shared/services/api'
+import { useGetProducts } from '@/shared/services/api'
 import { Button } from 'primevue'
 
-const { data, error, refetch, isFetching } = useGetProducts()
-console.log(data.value)
-console.log(error.value)
+import { useSessionStore } from '@/features/auth'
 
-const { data: me } = useGetMe()
+const sessionStore = useSessionStore()
+
+const { data, error, refetch, isFetching } = useGetProducts()
 </script>
 
 <script lang="ts"></script>

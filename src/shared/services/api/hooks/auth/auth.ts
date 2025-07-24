@@ -4,13 +4,33 @@
  * Admin Simple API
  * OpenAPI spec version: 1.0.0
  */
-import { useMutation } from '@tanstack/vue-query'
-import type { MutationFunction, QueryClient, UseMutationOptions, UseMutationReturnType } from '@tanstack/vue-query'
+import { useMutation, useQuery } from '@tanstack/vue-query'
+import type {
+  DataTag,
+  MutationFunction,
+  QueryClient,
+  QueryFunction,
+  QueryKey,
+  UseMutationOptions,
+  UseMutationReturnType,
+  UseQueryOptions,
+  UseQueryReturnType,
+} from '@tanstack/vue-query'
 
 import { unref } from 'vue'
 import type { MaybeRef } from 'vue'
 
-import type { PostLogin200, PostLogin401, PostLogin500, PostLoginBody } from '../../models'
+import type {
+  GetMe401,
+  GetMe500,
+  PostLogin200,
+  PostLogin401,
+  PostLogin500,
+  PostLoginBody,
+  PostLogout200,
+  PostLogout401,
+  User,
+} from '../../models'
 
 import { request } from '../../../../lib/axios/index'
 
@@ -67,6 +87,102 @@ export const usePostLogin = <TError = PostLogin401 | PostLogin500, TContext = un
   queryClient?: QueryClient,
 ): UseMutationReturnType<Awaited<ReturnType<typeof postLogin>>, TError, { data: PostLoginBody }, TContext> => {
   const mutationOptions = getPostLoginMutationOptions(options)
+
+  return useMutation(mutationOptions, queryClient)
+}
+/**
+ * @summary Get current user
+ */
+export const getMe = (options?: SecondParameter<typeof request>, signal?: AbortSignal) => {
+  return request<User>({ url: `/me`, method: 'GET', signal }, options)
+}
+
+export const getGetMeQueryKey = () => {
+  return ['me'] as const
+}
+
+export const getGetMeQueryOptions = <
+  TData = Awaited<ReturnType<typeof getMe>>,
+  TError = GetMe401 | GetMe500,
+>(options?: {
+  query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>>
+  request?: SecondParameter<typeof request>
+}) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {}
+
+  const queryKey = getGetMeQueryKey()
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getMe>>> = ({ signal }) => getMe(requestOptions, signal)
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>
+}
+
+export type GetMeQueryResult = NonNullable<Awaited<ReturnType<typeof getMe>>>
+export type GetMeQueryError = GetMe401 | GetMe500
+
+/**
+ * @summary Get current user
+ */
+
+export function useGetMe<TData = Awaited<ReturnType<typeof getMe>>, TError = GetMe401 | GetMe500>(
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>>
+    request?: SecondParameter<typeof request>
+  },
+  queryClient?: QueryClient,
+): UseQueryReturnType<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+  const queryOptions = getGetMeQueryOptions(options)
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryReturnType<TData, TError> & {
+    queryKey: DataTag<QueryKey, TData, TError>
+  }
+
+  query.queryKey = unref(queryOptions).queryKey as DataTag<QueryKey, TData, TError>
+
+  return query
+}
+
+/**
+ * Logs the user out by clearing the authentication cookies.
+ * @summary Logout
+ */
+export const postLogout = (options?: SecondParameter<typeof request>, signal?: AbortSignal) => {
+  return request<PostLogout200>({ url: `/logout`, method: 'POST', signal }, options)
+}
+
+export const getPostLogoutMutationOptions = <TError = PostLogout401, TContext = unknown>(options?: {
+  mutation?: UseMutationOptions<Awaited<ReturnType<typeof postLogout>>, TError, void, TContext>
+  request?: SecondParameter<typeof request>
+}): UseMutationOptions<Awaited<ReturnType<typeof postLogout>>, TError, void, TContext> => {
+  const mutationKey = ['postLogout']
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined }
+
+  const mutationFn: MutationFunction<Awaited<ReturnType<typeof postLogout>>, void> = () => {
+    return postLogout(requestOptions)
+  }
+
+  return { mutationFn, ...mutationOptions }
+}
+
+export type PostLogoutMutationResult = NonNullable<Awaited<ReturnType<typeof postLogout>>>
+
+export type PostLogoutMutationError = PostLogout401
+
+/**
+ * @summary Logout
+ */
+export const usePostLogout = <TError = PostLogout401, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<Awaited<ReturnType<typeof postLogout>>, TError, void, TContext>
+    request?: SecondParameter<typeof request>
+  },
+  queryClient?: QueryClient,
+): UseMutationReturnType<Awaited<ReturnType<typeof postLogout>>, TError, void, TContext> => {
+  const mutationOptions = getPostLogoutMutationOptions(options)
 
   return useMutation(mutationOptions, queryClient)
 }

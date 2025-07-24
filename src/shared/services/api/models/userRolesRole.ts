@@ -8,10 +8,13 @@
 /**
  * The role of the user
  */
-export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+export type UserRolesRole = (typeof UserRolesRole)[keyof typeof UserRolesRole]
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
-export const UserRole = {
-  admin: 'admin',
+export const UserRolesRole = {
   user: 'user',
+  admin: 'admin',
+  superadmin: 'superadmin',
+  sale: 'sale',
+  marketing: 'marketing',
 } as const

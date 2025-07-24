@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAuthLogin } from '@/features/auth/auth.lib'
+import { useAuthLogin } from '@/features/auth/login/auth.lib'
 import { Button, InputText } from 'primevue'
 import { reactive } from 'vue'
 

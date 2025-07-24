@@ -49,7 +49,7 @@ export const getGetProductsResponseMock = (): Product[] =>
         undefined,
       ]),
     },
-    createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
+    createdAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]),
   }))
 
 export const getGetProductsResponseMock200 = (): Product[] =>
@@ -91,7 +91,7 @@ export const getGetProductsResponseMock200 = (): Product[] =>
         undefined,
       ]),
     },
-    createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
+    createdAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]),
   }))
 
 export const getGetProductsMockHandler = (

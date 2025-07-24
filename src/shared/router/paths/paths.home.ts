@@ -5,7 +5,7 @@ const homePath: PathType = {
     path: '/',
     name: 'home-page-route',
     meta: {
-      title: 'Home',
+      title: 'Dashboard',
       requiresAuth: true,
     },
   },

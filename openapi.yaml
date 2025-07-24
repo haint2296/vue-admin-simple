@@ -33,15 +33,27 @@ paths:
       responses:
         '200':
           description: Login successful
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9; Path=/; HttpOnly
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  token:
+                  access_token:
                     type: string
+                    description: The access token
+                    format: jwt
+                  refresh_token:
+                    type: string
+                    description: The refresh token
+                    format: jwt
                 required:
-                  - token
+                  - access_token
+                  - refresh_token
         '401':
           description: Unauthorized
           content:
@@ -65,10 +77,11 @@ paths:
   /me:
     get:
       tags:
-        - users
+        - auth
       summary: Get current user
       security:
-        - session: []
+        - accessTokenAuth: []
+        - refreshTokenAuth: []
       responses:
         '200':
           description: Current user
@@ -96,21 +109,52 @@ paths:
                   message:
                     type: string
                     description: The error message
+  /logout:
+    post:
+      tags:
+        - auth
+      summary: Logout
+      description: Logs the user out by clearing the authentication cookies.
+      security:
+        - accessTokenAuth: []
+        - refreshTokenAuth: []
+      responses:
+        '200':
+          description: Logout successful
+          headers:
+            Set-Cookie:
+              schema:
+                type: string
+                example: access_token=; HttpOnly; Path=/; Max-Age=0
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Logged out successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Unauthorized
   /products:
     get:
       tags:
         - products
       summary: Get all products
       security:
-        - session: []
+        - accessTokenAuth: []
+        - refreshTokenAuth: []
       responses:
         '200':
           description: A list of products
-          headers:
-            Set-Cookie:
-              schema:
-                type: string
-                example: session_id=xxxxxxxxxxxxxxx; Path=/; HttpOnly; SameSite=Lax; Secure
           content:
             application/json:
               schema:
@@ -120,11 +164,41 @@ paths:
 
 components:
   securitySchemes:
-    session:
+    accessTokenAuth:
       type: apiKey
       in: cookie
-      name: session_id
+      name: access_token
+    refreshTokenAuth:
+      type: apiKey
+      in: cookie
+      name: refresh_token
   schemas:
+    UserRoles:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+            - user
+            - admin
+            - superadmin
+            - sale
+            - marketing
+          description: The role of the user
+        permissions_groups:
+          type: array
+          items:
+            type: string
+          description: The permissions groups of the user
+        permissions:
+          type: array
+          items:
+            type: string
+          description: The permissions of the user
+      required:
+        - role
+        - permissions_groups
+        - permissions
     User:
       type: object
       properties:
@@ -170,12 +244,8 @@ components:
             - female
             - other
           description: The gender of the user
-        role:
-          type: string
-          enum:
-            - admin
-            - user
-          description: The role of the user
+        roles:
+          $ref: '#/components/schemas/UserRoles'
         status:
           type: string
           enum:
@@ -183,25 +253,23 @@ components:
             - inactive
             - pending
           description: The status of the user
-        createdAt:
+        created_at:
           type: string
           format: date-time
           description: The date and time the user was created
-    Product:
-      type: object
       required:
         - id
         - name
-        - description
-        - price
+        - email
+        - address
+        - phone
+        - website
+        - gender
+        - roles
         - status
-        - category
-        - image
-        - stock
-        - brand
-        - tags
-        - attributes
-        - createdAt
+        - created_at
+    Product:
+      type: object
       properties:
         id:
           type: string
@@ -265,3 +333,16 @@ components:
           type: string
           format: date-time
           description: The date and time the product was created
+      required:
+        - id
+        - name
+        - description
+        - price
+        - status
+        - category
+        - image
+        - stock
+        - brand
+        - tags
+        - attributes
+        - created_at

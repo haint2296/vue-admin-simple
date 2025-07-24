@@ -32,6 +32,6 @@ export const getProductsResponseItem = zod.object({
       })
       .optional(),
   }),
-  createdAt: zod.iso.datetime({}).describe('The date and time the product was created'),
+  createdAt: zod.iso.datetime({}).optional().describe('The date and time the product was created'),
 })
 export const getProductsResponse = zod.array(getProductsResponseItem)
