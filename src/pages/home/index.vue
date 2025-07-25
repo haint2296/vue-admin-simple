@@ -45,11 +45,13 @@
       <h1>Me</h1>
       <pre>{{ sessionStore.user?.name }}</pre>
     </div>
+    <SidebarTrigger />
   </div>
 </template>
 
 <script setup lang="ts">
 import { useGetProducts } from '@/shared/services/api'
+import { SidebarTrigger } from '@/widgets/sidebar'
 import { Button } from 'primevue'
 
 import { useSessionStore } from '@/features/auth'
