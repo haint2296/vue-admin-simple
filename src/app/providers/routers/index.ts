@@ -32,8 +32,6 @@ router.beforeEach(async (to, _from, next) => {
   if (!sessionStore.isLoggedIn) {
     const data = await getMe()
 
-    console.log('data', data)
-
     if (data) {
       sessionStore.setSessionUser(
         mapUserFromMeDto({

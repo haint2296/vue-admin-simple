@@ -7,6 +7,7 @@ import { bootstrap } from './bootstrap'
 import router from './providers/routers'
 //** css */
 import '@/shared/styles/main.css'
+import '@/shared/styles/sidebar.css'
 import 'primeicons/primeicons.css'
 
 import Nora from '@primeuix/themes/nora'
