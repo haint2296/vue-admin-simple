@@ -1,0 +1,40 @@
+<script setup lang="ts">
+import { useSessionStore } from '@/features/auth'
+import { Drawer } from 'primevue'
+import { useSidebarStore } from '../store/sidebar.store'
+
+import { X } from 'lucide-vue-next'
+
+const sidebarStore = useSidebarStore()
+const sessionStore = useSessionStore()
+</script>
+
+<template>
+  <Drawer
+    v-model:visible="sidebarStore.open"
+    class="!w-[calc(var(--sidebar-width-mobile) + 16px)]"
+  >
+    <template #container="{ closeCallback }">
+      <div class="flex h-full flex-col">
+        <div class="flex shrink-0 items-center justify-between gap-3 px-6 pt-4">
+          <div class="flex items-center gap-2 text-lg font-bold">
+            <div class="bg-primary rounded-full p-1">
+              <div class="h-4 w-4 rounded-full bg-white" />
+            </div>
+            <div class="text-md">Vue Admin Simple</div>
+          </div>
+          <div>
+            <X @click="closeCallback" />
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto">
+          <div class="m-0 p-6">
+            <slot />
+          </div>
+        </div>
+        <div class="mx-4 mb-4">{{ sessionStore.user?.name }}</div>
+      </div>
+    </template>
+    <slot />
+  </Drawer>
+</template>
