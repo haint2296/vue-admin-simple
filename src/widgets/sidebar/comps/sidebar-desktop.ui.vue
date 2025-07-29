@@ -7,10 +7,11 @@ const sidebarStore = useSidebarStore()
 
 <template>
   <div
-    data-slot="sidebar"
-    class="transition-all duration-200"
+    :data-collapsible="!sidebarStore.open ? 'icon' : ''"
+    class="group transition-all duration-150"
     :class="cn(sidebarStore.open && 'w-[var(--sidebar-width)]', !sidebarStore.open && 'w-[var(--sidebar-width-icon)]')"
   >
+    <slot name="header" />
     <slot />
   </div>
 </template>

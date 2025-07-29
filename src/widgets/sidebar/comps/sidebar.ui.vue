@@ -19,9 +19,11 @@ const sidebarComponents = computed(() => {
 <template>
   <component
     :is="sidebarComponents"
-    class="ctx-sidebar flex flex-col justify-center"
+    class="ctx-sidebar border-surface flex min-h-screen flex-col justify-start border-r"
   >
-    <SidebarHeader />
+    <template #header>
+      <SidebarHeader />
+    </template>
     <SidebarContent />
   </component>
 </template>
