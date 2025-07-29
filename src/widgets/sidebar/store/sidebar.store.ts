@@ -5,10 +5,15 @@ import { useMobileStore } from '@/shared/lib/utils'
 
 export const useSidebarStore = defineStore('sidebar-store', () => {
   const open = ref(true)
+  const openMobile = ref(false)
   const mobileStore = useMobileStore()
 
   const setOpen = (isOpen: boolean) => {
     open.value = isOpen
+  }
+
+  const setOpenMobile = (isOpen: boolean) => {
+    openMobile.value = isOpen
   }
 
   const toggleSidebar = () => {
@@ -17,5 +22,5 @@ export const useSidebarStore = defineStore('sidebar-store', () => {
 
   const isMobile = computed(() => mobileStore.isMobile)
 
-  return { open, setOpen, toggleSidebar, isMobile }
+  return { open, openMobile, setOpen, setOpenMobile, toggleSidebar, isMobile }
 })
