@@ -7,13 +7,21 @@ import { Button } from 'primevue'
 import { useSidebarStore } from '../store/sidebar.store'
 
 const sidebarStore = useSidebarStore()
+
+function handleClick() {
+  if (sidebarStore.isMobile) {
+    sidebarStore.setOpenMobile(!sidebarStore.openMobile)
+  } else {
+    sidebarStore.setOpen(!sidebarStore.open)
+  }
+}
 </script>
 
 <template>
   <Button
     variant="text"
     class="p-0! hover:p-0!"
-    @click="sidebarStore.setOpen(!sidebarStore.open)"
+    @click="handleClick"
   >
     <PanelRight />
   </Button>

@@ -11,7 +11,7 @@ const sessionStore = useSessionStore()
 
 <template>
   <Drawer
-    v-model:visible="sidebarStore.open"
+    v-model:visible="sidebarStore.openMobile"
     class="!w-[calc(var(--sidebar-width-mobile) + 16px)]"
   >
     <template #container="{ closeCallback }">
