@@ -10,7 +10,7 @@ import '@/shared/styles/main.css'
 import '@/shared/styles/sidebar.css'
 import 'primeicons/primeicons.css'
 
-import Nora from '@primeuix/themes/nora'
+import Aura from '@primeuix/themes/aura'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
 
@@ -23,7 +23,7 @@ bootstrap().then(() => {
     .use(VueQueryPlugin)
     .use(PrimeVue, {
       theme: {
-        preset: Nora,
+        preset: Aura,
         options: {
           darkModeSelector: '.dark',
         },
