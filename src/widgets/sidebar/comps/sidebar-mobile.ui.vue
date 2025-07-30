@@ -18,7 +18,7 @@ const sessionStore = useSessionStore()
           <slot name="header" />
         </div>
         <div class="flex-1 overflow-y-auto">
-          <div class="m-0 p-6">
+          <div class="m-0">
             <slot />
           </div>
         </div>

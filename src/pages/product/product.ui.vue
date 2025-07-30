@@ -1,15 +1,13 @@
 <template>
   <div>
     <SidebarProvider>
-      <header>
-        <SidebarTrigger />
-      </header>
+      <section>content</section>
     </SidebarProvider>
   </div>
 </template>
 
 <script setup lang="ts">
-import { SidebarProvider, SidebarTrigger } from '@/widgets/sidebar'
+import { SidebarProvider } from '@/widgets/sidebar'
 </script>
 
 <script lang="ts"></script>
