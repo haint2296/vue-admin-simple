@@ -9,7 +9,14 @@ const sidebarStore = useSidebarStore()
   <div
     :data-collapsible="!sidebarStore.open ? 'icon' : ''"
     class="group transition-all duration-150"
-    :class="cn(sidebarStore.open && 'w-[var(--sidebar-width)]', !sidebarStore.open && 'w-[var(--sidebar-width-icon)]')"
+    :class="
+      cn(
+        sidebarStore.open && 'w-[var(--sidebar-width)]',
+        !sidebarStore.open && 'w-[var(--sidebar-width-icon)]',
+        sidebarStore.open && 'min-w-[var(--sidebar-width)]',
+        !sidebarStore.open && 'min-w-[var(--sidebar-width-icon)]',
+      )
+    "
   >
     <slot name="header" />
     <slot />
