@@ -20,9 +20,10 @@ function handleClick() {
 <template>
   <Button
     variant="text"
-    class="p-0! hover:p-0!"
+    class="! p-0! hover:p-0!"
     @click="handleClick"
+    type="button"
   >
-    <PanelRight />
+    <PanelRight class="h-5 w-5" />
   </Button>
 </template>
