@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { Toast } from 'primevue'
+defineOptions({
+  name: 'SidebarInset',
+})
 </script>
 
 <template>
   <div>
-    <Toast />
-    <router-view />
+    <slot />
   </div>
 </template>

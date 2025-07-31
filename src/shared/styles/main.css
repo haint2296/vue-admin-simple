@@ -1,3 +1,13 @@
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
 @source '../../../src';
+
+:root {
+  --muted-foreground: 240 5% 64%;
+}
+
+@layer utilities {
+  .text-muted-foreground {
+    color: hsl(var(--muted-foreground));
+  }
+}
