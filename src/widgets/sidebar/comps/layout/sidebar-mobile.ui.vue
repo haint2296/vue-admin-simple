@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSessionStore } from '@/features/auth'
 import { Drawer } from 'primevue'
-import { useSidebarStore } from '../store/sidebar.store'
+import { useSidebarStore } from '../../store/sidebar.store'
 
 const sidebarStore = useSidebarStore()
 const sessionStore = useSessionStore()
@@ -26,5 +26,6 @@ const sessionStore = useSessionStore()
       </div>
     </template>
     <slot />
+    <slot name="footer" />
   </Drawer>
 </template>

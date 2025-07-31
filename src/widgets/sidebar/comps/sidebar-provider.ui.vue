@@ -1,17 +1,26 @@
 <script setup lang="ts">
 import { cn } from '@/shared/lib/utils'
 import { SidebarTrigger } from '@/widgets/sidebar'
+import { provideSidebarContext } from '../context'
 import { useSidebarStore } from '../store/sidebar.store'
-import SidebarInsetA from './sidebar-inset-a.ui.vue'
+import { SidebarInset } from './inset'
 import Sidebar from './sidebar.ui.vue'
 
+/**
+ * Provide the sidebar context
+ */
+provideSidebarContext()
+
+/**
+ * Get the sidebar store
+ */
 const sidebarStore = useSidebarStore()
 </script>
 
 <template>
   <div class="flex w-full">
     <Sidebar />
-    <SidebarInsetA class="w-full">
+    <SidebarInset class="w-full">
       <main class="bg-background relative flex w-full flex-1 flex-col">
         <header
           :class="
@@ -28,7 +37,7 @@ const sidebarStore = useSidebarStore()
           <slot />
         </div>
       </main>
-    </SidebarInsetA>
+    </SidebarInset>
   </div>
 </template>
 

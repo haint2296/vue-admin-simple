@@ -8,7 +8,6 @@ import { bootstrap } from './bootstrap'
 import router from './providers/routers'
 //** css */
 import '@/shared/styles/main.css'
-import '@/shared/styles/sidebar.css'
 import 'primeicons/primeicons.css'
 
 import Aura from '@primeuix/themes/aura'
@@ -16,6 +15,8 @@ import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
 
 import StyleClass from 'primevue/styleclass'
+
+import ToastService from 'primevue/toastservice'
 
 bootstrap().then(() => {
   const app = createApp(App)
@@ -32,6 +33,7 @@ bootstrap().then(() => {
         },
       },
     })
+  app.use(ToastService)
   app.directive('ripple', Ripple)
   app.directive('styleclass', StyleClass)
   app.mount('#ctx-app')

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { cn } from '@/shared/lib/utils'
-import { useSidebarStore } from '../store/sidebar.store'
+import { useSidebarStore } from '../../store/sidebar.store'
 
 const sidebarStore = useSidebarStore()
 </script>
@@ -20,5 +20,6 @@ const sidebarStore = useSidebarStore()
   >
     <slot name="header" />
     <slot />
+    <slot name="footer" />
   </div>
 </template>

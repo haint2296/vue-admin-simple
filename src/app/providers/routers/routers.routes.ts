@@ -4,11 +4,16 @@ import { homeRoute } from '@/pages/home'
 import { loginRoute } from '@/pages/login'
 import { notfoundRoute } from '@/pages/notfound'
 import { productRoute } from '@/pages/product'
+import { BaseLayout } from '@/widgets/layout'
 
 export const routes: RouteRecordRaw[] = [
   loginRoute,
-  homeRoute,
-  productRoute,
+  {
+    path: '/',
+    component: BaseLayout,
+    children: [homeRoute, productRoute],
+  },
+
   /**
    * This route must be the last one to catch all the routes that are not defined
    *

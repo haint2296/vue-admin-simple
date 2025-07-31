@@ -4,7 +4,7 @@ import { Button } from 'primevue'
 /**
  * stores
  */
-import { useSidebarStore } from '../store/sidebar.store'
+import { useSidebarStore } from '../../store/sidebar.store'
 
 const sidebarStore = useSidebarStore()
 

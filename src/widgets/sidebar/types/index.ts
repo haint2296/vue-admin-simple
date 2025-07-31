@@ -7,7 +7,7 @@ type SidebarProviderProps = {
 type SidebarContentMenuItemProps = {
   title: string
   icon?: Component
-  subItems?: Array<SidebarContentMenuItemProps> | undefined
+  items?: Array<SidebarContentMenuItemProps> | undefined
 }
 
 export type { SidebarContentMenuItemProps, SidebarProviderProps }

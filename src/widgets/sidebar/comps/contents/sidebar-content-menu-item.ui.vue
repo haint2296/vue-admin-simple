@@ -1,16 +1,28 @@
 <script setup lang="ts">
 import { ChevronRight } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
-import type { SidebarContentMenuItemProps } from '../types'
+import { useSidebarMenuContext } from '../../context'
+import type { SidebarContentMenuItemProps } from '../../types'
 
+/**
+ * This component must be used within a SidebarContentMenu.
+ */
+useSidebarMenuContext()
+
+/**
+ * Props with defaults.
+ */
 const props = withDefaults(defineProps<SidebarContentMenuItemProps>(), {
   title: '',
   icon: undefined,
-  subItems: undefined,
+  items: undefined,
 })
 
+/**
+ * Computed dropdown properties.
+ */
 const dropdown = computed(() => {
-  return props.subItems && props.subItems.length > 0
+  return props.items && props.items.length > 0
 })
 
 const isShowDropdown = ref(false)
@@ -50,16 +62,16 @@ const isShowDropdown = ref(false)
       class="bg-surface-100 hidden rounded-xs py-2 text-sm"
     >
       <li
-        v-for="subItem in props.subItems"
-        :key="subItem.title"
+        v-for="item in props.items"
+        :key="item.title"
         class="pl-6"
       >
         <button class="flex w-full items-center gap-2 p-2 text-sm text-gray-600">
           <component
-            :is="subItem.icon"
+            :is="item.icon"
             class="h-4 w-4 flex-shrink-0"
           />
-          <span class="flex-1 text-left">{{ subItem.title }}</span>
+          <span class="flex-1 text-left">{{ item.title }}</span>
         </button>
       </li>
     </ul>

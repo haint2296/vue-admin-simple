@@ -1,4 +1,4 @@
-import type { PathType } from './pahts.types'
+import type { PathType } from './paths.types'
 
 const productPath: PathType = {
   base: {
