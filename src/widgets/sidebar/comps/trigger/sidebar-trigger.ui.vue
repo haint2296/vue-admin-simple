@@ -20,9 +20,11 @@ function handleClick() {
 <template>
   <Button
     variant="text"
-    class="! p-0! hover:p-0!"
+    class="!p-0 hover:!p-0"
     @click="handleClick"
     type="button"
+    :aria-label="sidebarStore.open ? 'Close sidebar' : 'Open sidebar'"
+    :aria-expanded="sidebarStore.open"
   >
     <PanelRight class="h-5 w-5" />
   </Button>

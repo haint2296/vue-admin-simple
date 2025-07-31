@@ -31,6 +31,8 @@ const isShowDropdown = ref(false)
 <template>
   <li class="w-min-0 relative w-full truncate">
     <button
+      :aria-expanded="dropdown ? isShowDropdown : undefined"
+      :aria-haspopup="dropdown ? 'true' : undefined"
       v-ripple="dropdown"
       v-styleclass="
         dropdown
@@ -47,7 +49,12 @@ const isShowDropdown = ref(false)
       class="flex w-full items-center justify-between gap-2 rounded-xl p-2 text-sm text-gray-600"
     >
       <component
+        v-if="props.icon"
         :is="props.icon || 'div'"
+        class="h-4 w-4 flex-shrink-0"
+      />
+      <div
+        v-else
         class="h-4 w-4 flex-shrink-0"
       />
       <span class="flex-1 text-left">{{ props.title }}</span>
@@ -59,14 +66,20 @@ const isShowDropdown = ref(false)
     </button>
     <ul
       v-if="dropdown"
+      :aria-hidden="!isShowDropdown"
+      role="menu"
       class="bg-surface-100 hidden rounded-xs py-2 text-sm"
     >
       <li
         v-for="item in props.items"
         :key="item.title"
+        role="none"
         class="pl-6"
       >
-        <button class="flex w-full items-center gap-2 p-2 text-sm text-gray-600">
+        <button
+          role="menuitem"
+          class="flex w-full items-center gap-2 p-2 text-sm text-gray-600"
+        >
           <component
             :is="item.icon"
             class="h-4 w-4 flex-shrink-0"

@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { useSessionStore } from '@/features/auth'
 import { Drawer } from 'primevue'
 import { useSidebarStore } from '../../store/sidebar.store'
 
 const sidebarStore = useSidebarStore()
-const sessionStore = useSessionStore()
 </script>
 
 <template>
@@ -22,10 +20,8 @@ const sessionStore = useSessionStore()
             <slot />
           </div>
         </div>
-        <div class="mx-4 mb-4">{{ sessionStore.user?.name }}</div>
+        <slot name="footer" />
       </div>
     </template>
-    <slot />
-    <slot name="footer" />
   </Drawer>
 </template>
