@@ -6,7 +6,10 @@ defineOptions({
 </script>
 
 <template>
-  <SidebarProvider>
-    <router-view />
-  </SidebarProvider>
+  <div>
+    <SidebarProvider>
+      <!-- View  slot -->
+      <router-view />
+    </SidebarProvider>
+  </div>
 </template>
