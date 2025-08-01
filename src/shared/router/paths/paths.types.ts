@@ -1,3 +1,5 @@
+import type { Breadcrumbs } from '@/shared/types'
+
 export type PathType = {
   [key: string]: {
     path: string
@@ -5,6 +7,7 @@ export type PathType = {
     meta: {
       title: string
       requiresAuth: boolean
+      breadcrumb?: Breadcrumbs
     }
   }
 }

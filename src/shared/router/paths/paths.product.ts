@@ -1,3 +1,4 @@
+import { ShoppingCart } from 'lucide-vue-next'
 import type { PathType } from './paths.types'
 
 const productPath: PathType = {
@@ -7,6 +8,11 @@ const productPath: PathType = {
     meta: {
       title: 'Products',
       requiresAuth: true,
+      breadcrumb: {
+        label: 'Products',
+        to: '/products',
+        iconComps: ShoppingCart,
+      },
     },
   },
 } as const

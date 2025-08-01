@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useSidebarContext } from '../context'
-import { useSidebarStore } from '../store/sidebar.store'
-import { SidebarContent } from './contents'
-import { SidebarFooter } from './footer'
-import { SidebarHeader } from './header'
-import { SidebarDesktop, SidebarMobile } from './layout'
+
+import { SidebarContent } from '@/widgets/sidebar/comps/contents'
+import { SidebarFooter } from '@/widgets/sidebar/comps/footer'
+import { SidebarHeader } from '@/widgets/sidebar/comps/header'
+import { SidebarDesktop, SidebarMobile } from '@/widgets/sidebar/comps/layout'
+import { useSidebarContext } from '@/widgets/sidebar/context'
+import { useSidebarStore } from '@/widgets/sidebar/store'
 
 /**
  * Check if the sidebar is provided
