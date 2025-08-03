@@ -2,11 +2,14 @@
   <div>
     <section>Products</section>
     {{ products?.length }}
+    <DataTable />
   </div>
 </template>
 
 <script setup lang="ts">
 import { watchEffect } from 'vue'
+
+import { DataTable } from '@/shared/ui/datatable'
 
 import { useGetProducts } from '@/shared/services/api'
 import { useLoadingStore } from '@/shared/ui/app/loading/store'

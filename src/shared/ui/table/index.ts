@@ -1,0 +1,7 @@
+export { default as TableBody } from './comps/table-body.ui.vue'
+export { default as TableCell } from './comps/table-cell.ui.vue'
+export { default as TableHead } from './comps/table-head.ui.vue'
+export { default as TableHeader } from './comps/table-header.ui.vue'
+export { default as TableRow } from './comps/table-row.ui.vue'
+export { default as TableSkeleton } from './comps/table-skeleton.ui.vue'
+export { default as Table } from './comps/table.ui.vue'

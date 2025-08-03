@@ -4,10 +4,19 @@
 
 :root {
   --muted-foreground: 240 5% 64%;
+  --foreground: oklch(0.141 0.005 285.823);
+}
+
+.dark {
+  --foreground: oklch(0.985 0 0);
 }
 
 @layer utilities {
   .text-muted-foreground {
     color: hsl(var(--muted-foreground));
+  }
+
+  .text-foreground {
+    color: var(--foreground);
   }
 }
