@@ -7,7 +7,7 @@ import type { CloseLoadingCallback } from '../types'
 export const useLoadingStore = defineStore('loading-store', () => {
   const isLoading = ref(true)
 
-  const openLoading = () => {
+  const loading = () => {
     isLoading.value = true
   }
 
@@ -22,7 +22,7 @@ export const useLoadingStore = defineStore('loading-store', () => {
 
   return {
     isLoading,
-    openLoading,
+    loading,
     closeLoading,
     toggleLoading,
   }

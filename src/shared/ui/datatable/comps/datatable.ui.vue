@@ -1,12 +1,22 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends object">
 // import { useVueTable } from '@tanstack/vue-table'
-
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table'
+import type { Datatable } from '../types'
+
+const props = withDefaults(defineProps<Datatable<T>>(), {
+  loading: true,
+})
+
+console.log(props)
+
+// const { data, columns } = useVueTable({
+//   data: props.data,
+//   columns: props.columns,
+// })
 </script>
 
 <template>
   <div>
-    <h1>Datatable</h1>
     <div className="overflow-hidden rounded-md border border-surface-200">
       <Table>
         <TableHeader>
