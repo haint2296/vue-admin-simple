@@ -11,7 +11,7 @@ const props = defineProps<Props>()
 <template>
   <thead
     data-slot="table-header"
-    :class="cn('[&_tr]:border-surface-200 [&_tr]:border-b', props.class)"
+    :class="cn('[&_tr]:border-b', props.class)"
   >
     <slot />
   </thead>
