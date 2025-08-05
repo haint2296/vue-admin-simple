@@ -1,14 +1,24 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { InputText } from 'primevue'
 
-import { InputText } from 'primevue/'
+interface Props {
+  onSearch: (value: string) => void
+  placeholder?: string
+}
 
-const search = ref('')
+const props = withDefaults(defineProps<Props>(), {
+  onSearch: () => {},
+  placeholder: 'Search...',
+})
+
+const model = defineModel<string>('search')
 </script>
 
 <template>
   <InputText
-    v-model="search"
-    placeholder="Search"
+    v-model="model"
+    size="small"
+    :placeholder="props.placeholder"
+    @update:modelValue="value => props.onSearch(value ?? '')"
   />
 </template>

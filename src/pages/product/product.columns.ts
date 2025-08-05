@@ -6,10 +6,12 @@ const columnDef: ColumnDef<Product>[] = [
   {
     header: 'Name',
     accessorKey: 'name',
+    enableHiding: true,
   },
   {
     header: 'Price',
     accessorKey: 'price',
+    enableHiding: true,
   },
 ]
 

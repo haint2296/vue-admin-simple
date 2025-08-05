@@ -5,14 +5,22 @@ const columns: ColumnDef<ProductManagerTable>[] = [
   {
     header: 'ID',
     accessorKey: 'id',
+    enableHiding: false,
   },
   {
     header: 'Name',
     accessorKey: 'name',
+    enableHiding: true,
   },
   {
     header: 'Description',
     accessorKey: 'description',
+    enableHiding: true,
+  },
+  {
+    header: 'Status',
+    accessorKey: 'status',
+    enableHiding: true,
   },
 ]
 

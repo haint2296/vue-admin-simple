@@ -1,1 +1,1 @@
-export { default as DataTable } from './comps/datatable.ui.vue'
+export { default as DataTable } from './datatable.ui.vue'

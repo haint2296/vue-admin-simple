@@ -6,6 +6,7 @@ function mapProductFromDto(dtoProduct: DtoProduct): ProductManagerTable | null {
     id: dtoProduct.id,
     name: dtoProduct.name,
     description: dtoProduct.description,
+    status: dtoProduct.status,
   }
 
   return result as ProductManagerTable
