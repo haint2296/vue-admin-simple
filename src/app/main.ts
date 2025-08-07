@@ -10,31 +10,56 @@ import router from './providers/routers'
 import '@/shared/styles/main.css'
 import 'primeicons/primeicons.css'
 
-import Aura from '@primeuix/themes/aura'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
+import { appPrimeVuePreset } from './providers/themes'
 
 import StyleClass from 'primevue/styleclass'
 
 import ToastService from 'primevue/toastservice'
 
+/**
+ * store persist
+ */
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+
+/**
+ * Bootstrap app with mock data
+ */
 bootstrap().then(() => {
   const app = createApp(App)
+  /**
+   * Setup pinia
+   */
   const pinia = createPinia()
+  pinia.use(piniaPluginPersistedstate)
+  /**
+   * Setup app
+   */
   app
     .use(pinia)
     .use(router)
     .use(VueQueryPlugin)
     .use(PrimeVue, {
       theme: {
-        preset: Aura,
+        preset: appPrimeVuePreset,
         options: {
           darkModeSelector: '.dark',
         },
       },
     })
+
+  /**
+   * Setup app toast from primevue
+   */
   app.use(ToastService)
+  /**
+   * Setup app directive
+   */
   app.directive('ripple', Ripple)
   app.directive('styleclass', StyleClass)
+  /**
+   * Mount app
+   */
   app.mount('#ctx-app')
 })
