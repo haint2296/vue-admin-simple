@@ -29,7 +29,7 @@ const sidebarComponents = computed(() => {
 <template>
   <component
     :is="sidebarComponents"
-    class="ctx-sidebar border-surface bg-surface-50 flex min-h-screen flex-col gap-2 border-r pb-4"
+    class="ctx-sidebar bg-sidebar flex min-h-screen flex-col gap-2 pb-4"
   >
     <template #header>
       <SidebarHeader />

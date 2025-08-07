@@ -46,7 +46,7 @@ const isShowDropdown = ref(false)
           : {}
       "
       @click="isShowDropdown = !isShowDropdown"
-      class="flex w-full items-center justify-between gap-2 rounded-xl p-2 text-sm text-gray-600"
+      class="flex w-full items-center justify-between gap-2 rounded-xl p-2 text-sm"
     >
       <component
         v-if="props.icon"
@@ -78,7 +78,7 @@ const isShowDropdown = ref(false)
       >
         <button
           role="menuitem"
-          class="flex w-full items-center gap-2 p-2 text-sm text-gray-600"
+          class="flex w-full items-center gap-2 p-2 text-sm"
         >
           <component
             :is="item.icon"
