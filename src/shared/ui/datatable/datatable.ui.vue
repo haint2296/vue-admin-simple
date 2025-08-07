@@ -14,7 +14,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
  * @see ./comps/datatable-column-visibility.ui.vue
  * @see ./comps/datatable-searchbox.ui.vue
  */
-import { DatatableColumnVisibility, DatatableSearchbox } from './comps'
+import { DatatableColumnVisibility, DatatablePaginator, DatatableSearchbox } from './comps'
 /**
  * Types
  * @see ./types/datatatable.types.ts
@@ -127,5 +127,6 @@ const onSearch = (value: string) => {
         </TableBody>
       </Table>
     </div>
+    <DatatablePaginator :table="table" />
   </div>
 </template>

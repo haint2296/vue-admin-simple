@@ -14,7 +14,7 @@ const loadingStore = useLoadingStore()
 /**
  * load products
  */
-const { data: rawProducts, isFetching, refetch } = useGetProducts()
+const { data: rawProducts, isFetching } = useGetProducts()
 
 const products = computed(() => {
   return mapProductsFromDto(rawProducts.value || [])
@@ -34,9 +34,11 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div>
-    <section>Products</section>
+  <section class="mt-4 flex flex-col gap-4">
+    <div class="flex flex-col gap-1">
+      <span class="text-muted-foreground text-sm">Overview</span>
+      <h1 class="text-2xl font-bold">Products</h1>
+    </div>
     <ProductManagerTable :products="products" />
-    <button @click="refetch()">Refresh</button>
-  </div>
+  </section>
 </template>
