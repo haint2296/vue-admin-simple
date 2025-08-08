@@ -88,8 +88,4 @@
   .text-foreground {
     color: var(--foreground);
   }
-
-  .text-foreground {
-    color: var(--foreground);
-  }
 }

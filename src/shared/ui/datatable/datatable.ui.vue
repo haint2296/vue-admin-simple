@@ -92,7 +92,7 @@ const onSearch = (value: string) => {
         />
       </div>
     </div>
-    <div className="overflow-hidden rounded-md border border-[var(--border)]">
+    <div class="overflow-hidden rounded-md border border-[var(--border)]">
       <Table>
         <TableHeader>
           <TableRow

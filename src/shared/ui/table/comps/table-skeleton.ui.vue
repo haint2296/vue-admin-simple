@@ -1,12 +1,16 @@
 <script setup lang="ts">
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table'
 
+import { Skeleton } from 'primevue'
+
 interface Props {
-  columnNames?: string[]
-  initRecords?: number
+  columnNames: string[]
+  rowCount?: number
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  rowCount: 3,
+})
 </script>
 
 <template>
@@ -22,7 +26,10 @@ const props = defineProps<Props>()
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow>
+      <TableRow
+        v-for="row in props.rowCount"
+        :key="row"
+      >
         <TableCell
           v-for="column in props.columnNames"
           :key="column"
