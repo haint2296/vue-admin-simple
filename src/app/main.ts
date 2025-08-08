@@ -44,9 +44,8 @@ bootstrap().then(() => {
       ripple: true,
       theme: {
         preset: appPrimeVuePreset,
-        prefix: 'p',
         options: {
-          darkModeSelector: '.p-dark',
+          darkModeSelector: '.dark',
           cssLayer: false,
         },
       },
