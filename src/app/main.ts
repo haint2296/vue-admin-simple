@@ -41,10 +41,12 @@ bootstrap().then(() => {
     .use(router)
     .use(VueQueryPlugin)
     .use(PrimeVue, {
+      ripple: true,
       theme: {
         preset: appPrimeVuePreset,
         options: {
           darkModeSelector: '.dark',
+          cssLayer: false,
         },
       },
     })
