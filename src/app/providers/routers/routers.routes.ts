@@ -4,6 +4,7 @@ import { homeRoute } from '@/pages/home'
 import { loginRoute } from '@/pages/login'
 import { notfoundRoute } from '@/pages/notfound'
 import { productRoute } from '@/pages/product'
+import { taskMainRoute } from '@/pages/tasks/main'
 import { BaseLayout } from '@/widgets/layout'
 
 export const routes: RouteRecordRaw[] = [
@@ -11,7 +12,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: BaseLayout,
-    children: [homeRoute, productRoute],
+    children: [homeRoute, productRoute, taskMainRoute],
   },
 
   /**
