@@ -18,7 +18,7 @@ export interface Task {
    * @minimum 0
    * @maximum 100
    */
-  progress_percent?: number
+  progress_percent: number
   /** The description of the task */
   description: string
   /** The status of the task */
@@ -27,9 +27,9 @@ export interface Task {
   /** The priority of the task */
   priority: TaskPriority
   /** The due date of the task */
-  dueDate: string
+  due_date: string
   /** The date and time the task was created */
-  createdAt: string
+  created_at: string
   /** The date and time the task was updated */
-  updatedAt: string
+  updated_at: string
 }

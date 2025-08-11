@@ -20,7 +20,6 @@ export const getTasksResponseItem = zod.object({
     .number()
     .min(getTasksResponseProgressPercentMin)
     .max(getTasksResponseProgressPercentMax)
-    .optional()
     .describe('The progress percentage of the task'),
   description: zod.string().describe('The description of the task'),
   status: zod
@@ -31,9 +30,9 @@ export const getTasksResponseItem = zod.object({
     name: zod.string().describe('The name of the task category'),
   }),
   priority: zod.enum(['Low', 'Medium', 'High']).describe('The priority of the task'),
-  dueDate: zod.iso.datetime({}).describe('The due date of the task'),
-  createdAt: zod.iso.datetime({}).describe('The date and time the task was created'),
-  updatedAt: zod.iso.datetime({}).describe('The date and time the task was updated'),
+  due_date: zod.iso.datetime({}).describe('The due date of the task'),
+  created_at: zod.iso.datetime({}).describe('The date and time the task was created'),
+  updated_at: zod.iso.datetime({}).describe('The date and time the task was updated'),
 })
 export const getTasksResponse = zod.array(getTasksResponseItem)
 
@@ -64,7 +63,6 @@ export const getTasksIdResponse = zod.object({
     .number()
     .min(getTasksIdResponseProgressPercentMin)
     .max(getTasksIdResponseProgressPercentMax)
-    .optional()
     .describe('The progress percentage of the task'),
   description: zod.string().describe('The description of the task'),
   status: zod
@@ -75,7 +73,7 @@ export const getTasksIdResponse = zod.object({
     name: zod.string().describe('The name of the task category'),
   }),
   priority: zod.enum(['Low', 'Medium', 'High']).describe('The priority of the task'),
-  dueDate: zod.iso.datetime({}).describe('The due date of the task'),
-  createdAt: zod.iso.datetime({}).describe('The date and time the task was created'),
-  updatedAt: zod.iso.datetime({}).describe('The date and time the task was updated'),
+  due_date: zod.iso.datetime({}).describe('The due date of the task'),
+  created_at: zod.iso.datetime({}).describe('The date and time the task was created'),
+  updated_at: zod.iso.datetime({}).describe('The date and time the task was updated'),
 })

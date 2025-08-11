@@ -427,6 +427,7 @@ components:
           description: The progress percentage of the task
           minimum: 0
           maximum: 100
+          example: 25
         description:
           type: string
           description: The description of the task
@@ -450,15 +451,15 @@ components:
             - Medium
             - High
           description: The priority of the task
-        dueDate:
+        due_date:
           type: string
           format: date-time
           description: The due date of the task
-        createdAt:
+        created_at:
           type: string
           format: date-time
           description: The date and time the task was created
-        updatedAt:
+        updated_at:
           type: string
           format: date-time
           description: The date and time the task was updated
@@ -466,12 +467,13 @@ components:
         - id
         - title
         - description
+        - progress_percent
         - status
         - category
         - priority
-        - dueDate
-        - createdAt
-        - updatedAt
+        - due_date
+        - created_at
+        - updated_at
     TaskCategory:
       type: object
       properties:
