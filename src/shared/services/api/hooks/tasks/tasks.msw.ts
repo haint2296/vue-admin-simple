@@ -28,10 +28,7 @@ export const getGetTasksResponseMock = (): Task[] =>
       'In Review',
       'Completed',
     ] as const),
-    category: {
-      id: faker.helpers.arrayElement([faker.string.uuid(), undefined]),
-      name: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
-    },
+    category: { id: faker.string.uuid(), name: faker.string.alpha({ length: { min: 10, max: 20 } }) },
     priority: faker.helpers.arrayElement(['Low', 'Medium', 'High'] as const),
     dueDate: `${faker.date.past().toISOString().split('.')[0]}Z`,
     createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -56,10 +53,7 @@ export const getGetTasksResponseMock200 = (): Task[] =>
       'In Review',
       'Completed',
     ] as const),
-    category: {
-      id: faker.helpers.arrayElement([faker.string.uuid(), undefined]),
-      name: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
-    },
+    category: { id: faker.string.uuid(), name: faker.string.alpha({ length: { min: 10, max: 20 } }) },
     priority: faker.helpers.arrayElement(['Low', 'Medium', 'High'] as const),
     dueDate: `${faker.date.past().toISOString().split('.')[0]}Z`,
     createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -68,14 +62,14 @@ export const getGetTasksResponseMock200 = (): Task[] =>
 
 export const getGetTasksCategoryResponseMock = (): TaskCategory[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
-    id: faker.helpers.arrayElement([faker.string.uuid(), undefined]),
-    name: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
+    id: faker.string.uuid(),
+    name: faker.string.alpha({ length: { min: 10, max: 20 } }),
   }))
 
 export const getGetTasksCategoryResponseMock200 = (): TaskCategory[] =>
   Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({
-    id: faker.helpers.arrayElement([faker.string.uuid(), undefined]),
-    name: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
+    id: faker.string.uuid(),
+    name: faker.string.alpha({ length: { min: 10, max: 20 } }),
   }))
 
 export const getGetTasksIdResponseMock = (overrideResponse: Partial<Task> = {}): Task => ({
@@ -95,10 +89,7 @@ export const getGetTasksIdResponseMock = (overrideResponse: Partial<Task> = {}):
     'In Review',
     'Completed',
   ] as const),
-  category: {
-    id: faker.helpers.arrayElement([faker.string.uuid(), undefined]),
-    name: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
-  },
+  category: { id: faker.string.uuid(), name: faker.string.alpha({ length: { min: 10, max: 20 } }) },
   priority: faker.helpers.arrayElement(['Low', 'Medium', 'High'] as const),
   dueDate: `${faker.date.past().toISOString().split('.')[0]}Z`,
   createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -123,10 +114,7 @@ export const getGetTasksIdResponseMock200 = (overrideResponse: Partial<Task> = {
     'In Review',
     'Completed',
   ] as const),
-  category: {
-    id: faker.helpers.arrayElement([faker.string.uuid(), undefined]),
-    name: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
-  },
+  category: { id: faker.string.uuid(), name: faker.string.alpha({ length: { min: 10, max: 20 } }) },
   priority: faker.helpers.arrayElement(['Low', 'Medium', 'High'] as const),
   dueDate: `${faker.date.past().toISOString().split('.')[0]}Z`,
   createdAt: `${faker.date.past().toISOString().split('.')[0]}Z`,

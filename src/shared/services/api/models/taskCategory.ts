@@ -7,7 +7,7 @@
 
 export interface TaskCategory {
   /** The unique identifier for the task category */
-  id?: string
+  id: string
   /** The name of the task category */
-  name?: string
+  name: string
 }

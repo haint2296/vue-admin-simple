@@ -27,8 +27,8 @@ export const getTasksResponseItem = zod.object({
     .enum(['Pending', 'In Progress', 'Cancelled', 'Backlog', 'Todo', 'In Review', 'Completed'])
     .describe('The status of the task'),
   category: zod.object({
-    id: zod.uuid().optional().describe('The unique identifier for the task category'),
-    name: zod.string().optional().describe('The name of the task category'),
+    id: zod.uuid().describe('The unique identifier for the task category'),
+    name: zod.string().describe('The name of the task category'),
   }),
   priority: zod.enum(['Low', 'Medium', 'High']).describe('The priority of the task'),
   dueDate: zod.iso.datetime({}).describe('The due date of the task'),
@@ -41,8 +41,8 @@ export const getTasksResponse = zod.array(getTasksResponseItem)
  * @summary Get all task categories
  */
 export const getTasksCategoryResponseItem = zod.object({
-  id: zod.uuid().optional().describe('The unique identifier for the task category'),
-  name: zod.string().optional().describe('The name of the task category'),
+  id: zod.uuid().describe('The unique identifier for the task category'),
+  name: zod.string().describe('The name of the task category'),
 })
 export const getTasksCategoryResponse = zod.array(getTasksCategoryResponseItem)
 
@@ -71,8 +71,8 @@ export const getTasksIdResponse = zod.object({
     .enum(['Pending', 'In Progress', 'Cancelled', 'Backlog', 'Todo', 'In Review', 'Completed'])
     .describe('The status of the task'),
   category: zod.object({
-    id: zod.uuid().optional().describe('The unique identifier for the task category'),
-    name: zod.string().optional().describe('The name of the task category'),
+    id: zod.uuid().describe('The unique identifier for the task category'),
+    name: zod.string().describe('The name of the task category'),
   }),
   priority: zod.enum(['Low', 'Medium', 'High']).describe('The priority of the task'),
   dueDate: zod.iso.datetime({}).describe('The due date of the task'),
