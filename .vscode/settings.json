@@ -10,9 +10,13 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.tabSize": 2,
+  "editor.rulers": [100],
+  "editor.wordWrapColumn": 100,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
   "editor.formatOnPaste": true,
   "editor.formatOnSaveMode": "file",
-  "eslint.validate": ["javascript", "typescript", "vue"]
+  "editor.wordWrap": "bounded",
+  "eslint.validate": ["javascript", "typescript", "vue"],
+  "prettier.requireConfig": true
 }

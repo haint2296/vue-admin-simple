@@ -1,6 +1,6 @@
 import type { PathType } from './paths.types'
 
-const homePath: PathType = {
+const dashboardPath: PathType = {
   base: {
     path: '/',
     name: 'home-page-route',
@@ -11,4 +11,4 @@ const homePath: PathType = {
   },
 } as const
 
-export { homePath }
+export { dashboardPath }
