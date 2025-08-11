@@ -1,5 +1,5 @@
 // import { useAuthStore } from '@/features/auth'
-import { homePath } from '@/shared/router'
+import { dashboardPath } from '@/shared/router'
 import { usePostLogin } from '@/shared/services/api'
 import { useRouter } from 'vue-router'
 
@@ -10,7 +10,7 @@ function useAuthLogin() {
     mutation: {
       onSuccess: () => {
         // authStore.isAuthenticated = true
-        router.push(homePath.base.path)
+        router.push(dashboardPath.base.path)
       },
     },
   })
