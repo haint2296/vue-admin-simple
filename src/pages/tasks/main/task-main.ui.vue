@@ -18,7 +18,7 @@
 import { watchEffect } from 'vue'
 
 import { useGetTasksApi } from '@/entities/task'
-import { useLoadingStore } from '@/shared/ui/app/loading'
+import { useLoadingStore } from '@/features/loading'
 
 import { TaskManagerTable } from '@/features/tasks/manager'
 

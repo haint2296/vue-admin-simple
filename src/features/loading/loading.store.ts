@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 import { defineStore } from 'pinia'
 
-import type { CloseLoadingCallback } from '../types'
+import type { CloseLoadingCallback } from './loading.type'
 
 export const useLoadingStore = defineStore('loading-store', () => {
   const isLoading = ref(true)

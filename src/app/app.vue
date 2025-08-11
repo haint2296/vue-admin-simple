@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Toast } from 'primevue'
 
-import { Loading } from '@/shared/ui/app/loading'
+import { Loading } from '@/features/loading'
 </script>
 
 <template>

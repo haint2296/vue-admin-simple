@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, watchEffect } from 'vue'
 
+import { useLoadingStore } from '@/features/loading'
 import { useGetProducts } from '@/shared/services/api'
-import { useLoadingStore } from '@/shared/ui/app/loading/store'
 
 import { ProductManagerTable, mapProductsFromDto } from '@/features/products/manager-table'
 

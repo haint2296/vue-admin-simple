@@ -70,7 +70,7 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 
-import { useLoadingStore } from '@/shared/ui/app/loading'
+import { useLoadingStore } from '@/features/loading'
 
 const loadingStore = useLoadingStore()
 
@@ -78,5 +78,3 @@ onMounted(() => {
   loadingStore.closeLoading()
 })
 </script>
-
-<script lang="ts"></script>

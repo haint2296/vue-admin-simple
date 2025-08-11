@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router'
 
-import { homeRoute } from '@/pages/home'
+import { dashboardRoute } from '@/pages/dashboard'
 import { loginRoute } from '@/pages/login'
 import { notfoundRoute } from '@/pages/notfound'
 import { productRoute } from '@/pages/product'
@@ -12,7 +12,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: BaseLayout,
-    children: [homeRoute, productRoute, taskMainRoute],
+    children: [dashboardRoute, productRoute, taskMainRoute],
   },
 
   /**

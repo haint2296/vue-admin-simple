@@ -5,7 +5,7 @@ const sidebarContents = [
     group: 'Platform',
     menus: [
       {
-        title: 'Home',
+        title: 'Dashboard',
         icon: Home,
       },
       {
