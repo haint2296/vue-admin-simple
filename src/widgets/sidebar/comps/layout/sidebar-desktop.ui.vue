@@ -8,7 +8,7 @@ const sidebarStore = useSidebarStore()
 <template>
   <div
     :data-collapsible="!sidebarStore.open ? 'icon' : ''"
-    class="group transition-all duration-150"
+    class="group transition-all duration-200"
     :class="
       cn(
         sidebarStore.open && 'w-[var(--sidebar-width)]',

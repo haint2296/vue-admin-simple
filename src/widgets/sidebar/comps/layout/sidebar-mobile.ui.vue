@@ -8,7 +8,7 @@ const sidebarStore = useSidebarStore()
 <template>
   <Drawer
     v-model:visible="sidebarStore.openMobile"
-    class="!w-[calc(var(--sidebar-width-mobile) + 16px)]"
+    class="!w-[calc(var(--sidebar-width-mobile) + 16px)] transition-all duration-200"
   >
     <template #container>
       <div class="flex h-full flex-col">

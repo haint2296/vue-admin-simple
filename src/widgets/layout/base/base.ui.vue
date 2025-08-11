@@ -4,7 +4,9 @@ import { useRoute } from 'vue-router'
 
 import { useBreadcrumbStore } from '@/features/breadcrumb/breadcrumb.store'
 import { useThemeStore } from '@/features/theme/switch-theme/store'
-import { SidebarProvider } from '@/widgets/sidebar'
+import { Sidebar } from '@/widgets/sidebar'
+
+import Header from '@/widgets/header/header.ui.vue'
 
 defineOptions({
   name: 'BaseLayout',
@@ -25,10 +27,13 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div>
-    <SidebarProvider>
-      <!-- View  slot -->
-      <router-view />
-    </SidebarProvider>
+  <div class="flex h-screen w-full overflow-hidden">
+    <Sidebar />
+    <main class="bg-background relative flex w-full flex-1 flex-col overflow-y-auto">
+      <Header />
+      <div class="mt-4 px-2">
+        <router-view />
+      </div>
+    </main>
   </div>
 </template>

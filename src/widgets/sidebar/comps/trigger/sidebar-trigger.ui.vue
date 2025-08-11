@@ -13,6 +13,9 @@ function handleClick() {
     sidebarStore.setOpenMobile(!sidebarStore.openMobile)
   } else {
     sidebarStore.setOpen(!sidebarStore.open)
+    if (!sidebarStore.open) {
+      sidebarStore.resetPanelOpened()
+    }
   }
 }
 </script>
@@ -20,7 +23,7 @@ function handleClick() {
 <template>
   <Button
     variant="text"
-    class="!p-2 hover:!p-2"
+    class="!p-0 hover:!p-0"
     @click="handleClick"
     type="button"
     :aria-label="sidebarStore.open ? 'Close sidebar' : 'Open sidebar'"

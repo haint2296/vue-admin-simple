@@ -1,17 +1,15 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 import { SidebarContent } from '@/widgets/sidebar/comps/contents'
 import { SidebarFooter } from '@/widgets/sidebar/comps/footer'
 import { SidebarHeader } from '@/widgets/sidebar/comps/header'
 import { SidebarDesktop, SidebarMobile } from '@/widgets/sidebar/comps/layout'
-import { useSidebarContext } from '@/widgets/sidebar/context'
 import { useSidebarStore } from '@/widgets/sidebar/store'
+import { computed } from 'vue'
 
 /**
  * Check if the sidebar is provided
  */
-useSidebarContext()
+// useSidebarContext()
 
 /**
  * Get the sidebar store
@@ -27,20 +25,22 @@ const sidebarComponents = computed(() => {
 </script>
 
 <template>
-  <component
-    :is="sidebarComponents"
-    class="ctx-sidebar bg-sidebar flex min-h-screen flex-col gap-2 pb-4"
-  >
-    <template #header>
-      <SidebarHeader />
-    </template>
-    <div class="flex flex-1 flex-col gap-2">
-      <SidebarContent />
-    </div>
-    <template #footer>
-      <SidebarFooter />
-    </template>
-  </component>
+  <div class="h-screen overflow-hidden p-2">
+    <component
+      :is="sidebarComponents"
+      class="ctx-sidebar border-sidebar flex h-full flex-col gap-2 overflow-hidden rounded-xl border"
+    >
+      <template #header>
+        <SidebarHeader />
+      </template>
+      <div class="flex flex-1 flex-col gap-2 overflow-auto">
+        <SidebarContent />
+      </div>
+      <template #footer>
+        <SidebarFooter />
+      </template>
+    </component>
+  </div>
 </template>
 
 <style scoped>

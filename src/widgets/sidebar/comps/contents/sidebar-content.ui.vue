@@ -25,6 +25,7 @@ import SidebarContentMenu from './sidebar-content-menu.ui.vue'
           :title="menu.title"
           :icon="menu.icon"
           :items="menu.items"
+          :keyPanel="menu.title"
         />
       </SidebarContentMenu>
     </div>

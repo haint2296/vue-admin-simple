@@ -17,6 +17,7 @@ import { appPrimeVuePreset } from './providers/themes'
 import StyleClass from 'primevue/styleclass'
 
 import ToastService from 'primevue/toastservice'
+import Tooltip from 'primevue/tooltip'
 
 /**
  * store persist
@@ -60,6 +61,7 @@ bootstrap().then(() => {
    */
   app.directive('ripple', Ripple)
   app.directive('styleclass', StyleClass)
+  app.directive('tooltip', Tooltip)
   /**
    * Mount app
    */

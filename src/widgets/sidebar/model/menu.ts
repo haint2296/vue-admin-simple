@@ -1,4 +1,4 @@
-import { Bell, Home, Palette, Settings, ShoppingCart, UserRoundCog, Users } from 'lucide-vue-next'
+import { Bell, Home, ListCheck, Palette, Settings, ShoppingBasket, UserRoundCog, Users } from 'lucide-vue-next'
 
 const sidebarContents = [
   {
@@ -25,7 +25,21 @@ const sidebarContents = [
       },
       {
         title: 'Products',
-        icon: ShoppingCart,
+        icon: ShoppingBasket,
+      },
+      {
+        title: 'Tasks',
+        icon: ListCheck,
+        items: [
+          {
+            title: 'Tasks',
+            url: '/tasks',
+          },
+          {
+            title: 'Categories',
+            url: '/tasks/categories',
+          },
+        ],
       },
     ],
   },

@@ -88,4 +88,8 @@
   .text-foreground {
     color: var(--foreground);
   }
+
+  .border-sidebar {
+    border-color: var(--sidebar-border);
+  }
 }

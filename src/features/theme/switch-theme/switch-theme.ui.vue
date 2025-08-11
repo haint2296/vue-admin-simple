@@ -23,11 +23,11 @@ const themeStore = useThemeStore()
   >
     <Moon
       v-if="themeStore.isDarkMode"
-      class="h-4 w-4"
+      class="h-5 w-5"
     />
     <Sun
       v-else
-      class="h-4 w-4"
+      class="h-5 w-5"
     />
   </Button>
 </template>
