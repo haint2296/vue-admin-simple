@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { sidebarContents } from '../../model/menu'
-import SidebarContentGroup from './sidebar-content-group.ui.vue'
-import SidebarContentMenuItem from './sidebar-content-menu-item.ui.vue'
-import SidebarContentMenu from './sidebar-content-menu.ui.vue'
+import SidebarContentGroup from './content-group.ui.vue'
+import SidebarContentMenuItem from './content-menu-item.ui.vue'
+import SidebarContentMenu from './content-menu.ui.vue'
 </script>
 
 <template>

@@ -1,1 +1,1 @@
-export { default as SidebarContent } from './sidebar-content.ui.vue'
+export { default as SidebarContent } from './content.ui.vue'
