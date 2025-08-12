@@ -40,7 +40,18 @@ bootstrap().then(() => {
   app
     .use(pinia)
     .use(router)
-    .use(VueQueryPlugin)
+    .use(VueQueryPlugin, {
+      queryClientConfig: {
+        defaultOptions: {
+          queries: {
+            staleTime: 60_000,
+            refetchOnWindowFocus: true,
+            refetchOnReconnect: true,
+            refetchOnMount: 'always',
+          },
+        },
+      },
+    })
     .use(PrimeVue, {
       ripple: true,
       theme: {

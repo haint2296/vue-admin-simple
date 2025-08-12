@@ -7,6 +7,7 @@ const dashboardPath: PathType = {
     meta: {
       title: 'Dashboard',
       requiresAuth: true,
+      keepAlive: true,
     },
   },
 } as const

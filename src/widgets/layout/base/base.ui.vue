@@ -32,7 +32,21 @@ watchEffect(() => {
     <main class="bg-background relative flex w-full flex-1 flex-col overflow-y-auto">
       <Header />
       <div class="mt-4 px-2">
-        <router-view />
+        <router-view v-slot="{ Component, route }">
+          <keep-alive
+            :include="['DashboardPage', 'ProductListPage']"
+            :max="10"
+          >
+            <component
+              v-if="route.meta.keepAlive"
+              :is="Component"
+            />
+            <component
+              v-else
+              :is="Component"
+            />
+          </keep-alive>
+        </router-view>
       </div>
     </main>
   </div>

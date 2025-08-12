@@ -8,6 +8,7 @@ export type PathType = {
       title: string
       requiresAuth: boolean
       breadcrumb?: Breadcrumbs
+      keepAlive?: boolean
     }
   }
 }
