@@ -22,10 +22,7 @@ import SidebarContentMenu from './content-menu.ui.vue'
         <SidebarContentMenuItem
           v-for="menu in content.menus"
           :key="menu.title"
-          :title="menu.title"
-          :icon="menu.icon"
-          :items="menu.items"
-          :keyPanel="menu.title"
+          :menu="menu"
         />
       </SidebarContentMenu>
     </div>

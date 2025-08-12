@@ -2,6 +2,7 @@
 import { Button, Menu } from 'primevue'
 import type { Component } from 'vue'
 import { computed, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import { useSidebarStore } from '../../store/sidebar.store'
 import type { SidebarContentMenuItemProps } from '../../types'
 
@@ -10,7 +11,7 @@ import { ChevronDown, ChevronRight } from 'lucide-vue-next'
 interface Props {
   title: string
   icon?: Component | string
-  url: string
+  url?: string
   dropdown?: boolean
   keyPanel?: string
   items?: Array<SidebarContentMenuItemProps> | undefined
@@ -35,9 +36,8 @@ const subMenu = computed(() => {
 })
 
 const headerPanelClick = () => {
-  console.log('headerPanelClick')
   if (sidebarStore.isMobile || sidebarStore.open) {
-    sidebarStore.togglePanel(props.keyPanel || '')
+    sidebarStore.togglePanel(props.title || '')
     return
   }
 }
@@ -56,7 +56,6 @@ const headerIconPanelClick = (event: Event) => {
     :pt="{
       root: '!bg-transparent !border-none !px-1 !rounded-xl !text-sm w-full',
     }"
-    @click="headerPanelClick"
   >
     <div class="flex w-full min-w-0 items-center gap-2">
       <template v-if="props.icon">
@@ -81,13 +80,11 @@ const headerIconPanelClick = (event: Event) => {
           ref="menu"
           popup
           :model="subMenu"
-          append-to="body"
           :pt="{ root: { class: 'ml-5 !-mt-2' } }"
+          append-to="body"
         >
           <template #item="{ item }">
-            <div
-              class="hover:bg-surface-100 flex cursor-pointer flex-col gap-2 rounded-xl px-2 py-2 text-sm"
-            >
+            <div class="flex cursor-pointer flex-col gap-2 rounded-xl px-2 py-2 text-sm">
               <span>{{ item.label }}</span>
             </div>
           </template>
@@ -97,9 +94,14 @@ const headerIconPanelClick = (event: Event) => {
         class="flex flex-1 cursor-pointer items-center gap-2"
         @click.stop="headerPanelClick"
       >
-        <span class="min-w-0 flex-1 truncate text-left">
+        <component
+          :is="props.url ? RouterLink : 'span'"
+          v-bind="props.url ? { to: props.url } : {}"
+          class="min-w-0 flex-1 truncate text-left"
+        >
           {{ props.title }}
-        </span>
+        </component>
+
         <component
           v-if="dropdown"
           :is="isPanelOpened ? ChevronRight : ChevronDown"

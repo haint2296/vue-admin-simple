@@ -1,3 +1,4 @@
+export * from './paths.customer'
 export * from './paths.dashboard'
 export * from './paths.login'
 export * from './paths.notfound'

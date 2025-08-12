@@ -3,8 +3,7 @@ import { computed } from 'vue'
 /**
  * Types.
  */
-import type { Component } from 'vue'
-import type { SidebarContentMenuItemProps } from '../../types'
+import type { SidebarContentMenuItem } from '../../types'
 /**
  * Components UI.
  */
@@ -17,22 +16,19 @@ import { useSidebarStore } from '../../store/sidebar.store'
 
 // Props
 const props = defineProps<{
-  title: string
-  icon?: Component | string
-  items?: Array<SidebarContentMenuItemProps> | undefined
-  keyPanel?: string
+  menu: SidebarContentMenuItem
 }>()
 
 const sidebarStore = useSidebarStore()
 
 const isPanelOpened = computed(() => {
-  return sidebarStore.panelOpened.includes(props.keyPanel || '')
+  return sidebarStore.panelOpened.includes(props.menu.title || '')
 })
 
 const panelCollapsed = computed({
   get: () => !isPanelOpened.value,
   set: next => {
-    const key = props.keyPanel || ''
+    const key = props.menu.keyPanel || ''
     if (!key) return
     const isOpenInStore = sidebarStore.panelOpened.includes(key)
     if (next && isOpenInStore) sidebarStore.togglePanel(key)
@@ -54,18 +50,17 @@ const panelCollapsed = computed({
   >
     <template #header>
       <ContentMenuItemButton
-        :title="props.title"
-        :icon="props.icon"
+        :title="props.menu.title"
+        :icon="props.menu.icon"
         :dropdown="true"
-        :url="'/'"
-        :items="items"
-        :keyPanel="props.keyPanel"
+        :items="props.menu.subMenus"
+        :keyPanel="props.menu.keyPanel"
       />
     </template>
 
     <ul class="border-sidebar !-mt-1 border-l !pb-0 !pl-3 !text-sm">
       <li
-        v-for="item in items"
+        v-for="item in props.menu.subMenus"
         :key="item.title"
       >
         <ContentMenuItemButton

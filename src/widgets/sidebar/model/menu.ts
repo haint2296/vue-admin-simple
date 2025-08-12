@@ -1,3 +1,7 @@
+import type { SidebarContent } from '../types'
+
+import { customersPath, dashboardPath, productPath, taskPath } from '@/shared/router'
+
 import {
   Bell,
   Home,
@@ -9,44 +13,54 @@ import {
   Users,
 } from 'lucide-vue-next'
 
-const sidebarContents = [
+const sidebarContents: Array<SidebarContent> = [
   {
     group: 'Platform',
     menus: [
       {
         title: 'Dashboard',
         icon: Home,
+        url: dashboardPath.base.path,
       },
       {
         title: 'Customers',
         icon: Users,
-        items: [
+        url: customersPath.base.path,
+        subMenus: [
           {
             title: 'List customers',
+            url: customersPath.base.path,
           },
           {
             title: 'Create new customer',
+            url: customersPath.base.path,
           },
           {
             title: 'Reports',
+            url: customersPath.base.path,
           },
         ],
       },
       {
         title: 'Products',
         icon: ShoppingBasket,
+        url: productPath.base.path,
       },
       {
         title: 'Tasks',
         icon: ListCheck,
-        items: [
+        subMenus: [
           {
             title: 'Tasks',
-            url: '/tasks',
+            url: taskPath.base.path,
           },
           {
             title: 'Categories',
-            url: '/tasks/categories',
+            url: taskPath.categories.path,
+          },
+          {
+            title: 'New Task',
+            url: taskPath.new.path,
           },
         ],
       },

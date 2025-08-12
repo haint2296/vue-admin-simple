@@ -25,6 +25,14 @@ const taskPath: PathType = {
       requiresAuth: true,
     },
   },
+  categories: {
+    path: '/tasks/categories',
+    name: 'task-categories-page-route',
+    meta: {
+      title: 'Task Categories',
+      requiresAuth: true,
+    },
+  },
 } as const
 
 export { taskPath }

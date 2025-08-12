@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useSidebarMenuContext } from '../../context'
-import type { SidebarContentMenuItemProps } from '../../types'
+import type { SidebarContentMenuItem } from '../../types'
 import ContentMenuItemButton from './content-menu-item-button.ui.vue'
 import ContentMenuItemPanel from './content-menu-item-panel.ui.vue'
 
@@ -13,17 +13,13 @@ useSidebarMenuContext()
 /**
  * Props with defaults.
  */
-const props = withDefaults(defineProps<SidebarContentMenuItemProps>(), {
-  title: '',
-  icon: undefined,
-  items: undefined,
-})
+const props = withDefaults(defineProps<{ menu: SidebarContentMenuItem }>(), {})
 
 /**
  * Computed dropdown properties.
  */
 const dropdown = computed(() => {
-  return props.items && props.items.length > 0
+  return props.menu.subMenus && props.menu.subMenus.length > 0
 })
 </script>
 
@@ -32,16 +28,13 @@ const dropdown = computed(() => {
     <ContentMenuItemButton
       class="!px-2"
       v-if="!dropdown"
-      :title="props.title"
-      :icon="props.icon || 'div'"
-      :url="props.url || ''"
+      :title="props.menu.title"
+      :icon="props.menu.icon || 'div'"
+      :url="props.menu.url || ''"
     />
     <ContentMenuItemPanel
       v-else
-      :title="props.title"
-      :icon="props.icon"
-      :items="props.items || []"
-      :keyPanel="props.keyPanel || ''"
+      :menu="props.menu"
     />
   </li>
 </template>

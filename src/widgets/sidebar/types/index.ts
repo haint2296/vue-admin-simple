@@ -12,4 +12,25 @@ type SidebarContentMenuItemProps = {
   keyPanel?: string
 }
 
-export type { SidebarContentMenuItemProps, SidebarProviderProps }
+type Menu = {
+  title: string
+  icon?: Component
+  url?: string
+  keyPanel?: string
+}
+
+type SidebarContentMenuItem = Menu & {
+  subMenus?: Array<Menu> | undefined
+}
+
+type SidebarContent = {
+  group: string
+  menus: Array<SidebarContentMenuItem>
+}
+
+export type {
+  SidebarContent,
+  SidebarContentMenuItem,
+  SidebarContentMenuItemProps,
+  SidebarProviderProps,
+}
