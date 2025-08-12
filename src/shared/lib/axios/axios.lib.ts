@@ -7,7 +7,10 @@ const baseURL = import.meta.env.DEV ? '/api' : '/vue-admin-simple/api'
 
 export const axiosInstance = Axios.create({ baseURL, withCredentials: true })
 
-export const request = <T>(config: AxiosRequestConfig, options?: AxiosRequestConfig): Promise<T> => {
+export const request = <T>(
+  config: AxiosRequestConfig,
+  options?: AxiosRequestConfig,
+): Promise<T> => {
   const source = Axios.CancelToken.source()
   const promise = axiosInstance({
     ...config,

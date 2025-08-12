@@ -5,6 +5,9 @@ type ManagerTableProps = {
   loading: boolean
 }
 
-type ManagerTableColumn = Pick<Task, 'id' | 'title' | 'description' | 'status' | 'priority' | 'createdAt'>
+type ManagerTableColumn = Pick<
+  Task,
+  'id' | 'title' | 'description' | 'status' | 'priority' | 'createdAt'
+>
 
 export type { ManagerTableColumn, ManagerTableProps }

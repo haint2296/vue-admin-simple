@@ -25,8 +25,14 @@ export const getGetProductsResponseMock = (): Product[] =>
       faker.string.alpha({ length: { min: 10, max: 20 } }),
     ),
     attributes: {
-      color: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
-      size: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
+      color: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      size: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
       weight: faker.helpers.arrayElement([
         faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
         undefined,
@@ -49,7 +55,10 @@ export const getGetProductsResponseMock = (): Product[] =>
         undefined,
       ]),
     },
-    createdAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]),
+    createdAt: faker.helpers.arrayElement([
+      `${faker.date.past().toISOString().split('.')[0]}Z`,
+      undefined,
+    ]),
   }))
 
 export const getGetProductsResponseMock200 = (): Product[] =>
@@ -67,8 +76,14 @@ export const getGetProductsResponseMock200 = (): Product[] =>
       faker.string.alpha({ length: { min: 10, max: 20 } }),
     ),
     attributes: {
-      color: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
-      size: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
+      color: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
+      size: faker.helpers.arrayElement([
+        faker.string.alpha({ length: { min: 10, max: 20 } }),
+        undefined,
+      ]),
       weight: faker.helpers.arrayElement([
         faker.number.float({ min: undefined, max: undefined, fractionDigits: 2 }),
         undefined,
@@ -91,7 +106,10 @@ export const getGetProductsResponseMock200 = (): Product[] =>
         undefined,
       ]),
     },
-    createdAt: faker.helpers.arrayElement([`${faker.date.past().toISOString().split('.')[0]}Z`, undefined]),
+    createdAt: faker.helpers.arrayElement([
+      `${faker.date.past().toISOString().split('.')[0]}Z`,
+      undefined,
+    ]),
   }))
 
 export const getGetProductsMockHandler = (

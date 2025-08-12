@@ -4,7 +4,16 @@ export type AuthStore = {
     name: string
     email: string
     roles: {
-      role: 'user' | 'admin' | 'superadmin' | 'sale' | 'marketing' | 'finance' | 'it' | 'hr' | 'other'
+      role:
+        | 'user'
+        | 'admin'
+        | 'superadmin'
+        | 'sale'
+        | 'marketing'
+        | 'finance'
+        | 'it'
+        | 'hr'
+        | 'other'
       permissions: string[]
       permissions_groups: string[]
     }

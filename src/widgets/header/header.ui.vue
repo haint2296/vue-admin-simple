@@ -9,7 +9,13 @@ import { Breadcrumb } from '@/features/breadcrumb'
 </script>
 
 <template>
-  <header :class="cn('flex h-16 flex-shrink-0 items-center justify-between gap-2 px-2 transition-all duration-200')">
+  <header
+    :class="
+      cn(
+        'flex h-16 flex-shrink-0 items-center justify-between gap-2 px-2 transition-all duration-200',
+      )
+    "
+  >
     <div class="flex items-center">
       <SidebarTrigger />
       <Divider

@@ -15,8 +15,8 @@ export const postLoginBody = zod.object({
 })
 
 export const postLoginResponse = zod.object({
-  access_token: zod.describe('The access token'),
-  refresh_token: zod.describe('The refresh token'),
+  access_token: zod.string().describe('The access token'),
+  refresh_token: zod.string().describe('The refresh token'),
 })
 
 /**
@@ -37,7 +37,9 @@ export const getMeResponse = zod.object({
   website: zod.string().describe('The website of the user'),
   gender: zod.enum(['male', 'female', 'other']).describe('The gender of the user'),
   roles: zod.object({
-    role: zod.enum(['user', 'admin', 'superadmin', 'sale', 'marketing']).describe('The role of the user'),
+    role: zod
+      .enum(['user', 'admin', 'superadmin', 'sale', 'marketing'])
+      .describe('The role of the user'),
     permissions_groups: zod.array(zod.string()).describe('The permissions groups of the user'),
     permissions: zod.array(zod.string()).describe('The permissions of the user'),
   }),

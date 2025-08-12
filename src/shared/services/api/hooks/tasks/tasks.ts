@@ -34,7 +34,10 @@ export const getGetTasksQueryKey = () => {
   return ['tasks'] as const
 }
 
-export const getGetTasksQueryOptions = <TData = Awaited<ReturnType<typeof getTasks>>, TError = unknown>(options?: {
+export const getGetTasksQueryOptions = <
+  TData = Awaited<ReturnType<typeof getTasks>>,
+  TError = unknown,
+>(options?: {
   query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getTasks>>, TError, TData>>
   request?: SecondParameter<typeof request>
 }) => {
@@ -42,9 +45,14 @@ export const getGetTasksQueryOptions = <TData = Awaited<ReturnType<typeof getTas
 
   const queryKey = getGetTasksQueryKey()
 
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof getTasks>>> = ({ signal }) => getTasks(requestOptions, signal)
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getTasks>>> = ({ signal }) =>
+    getTasks(requestOptions, signal)
 
-  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<Awaited<ReturnType<typeof getTasks>>, TError, TData>
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getTasks>>,
+    TError,
+    TData
+  >
 }
 
 export type GetTasksQueryResult = NonNullable<Awaited<ReturnType<typeof getTasks>>>
@@ -75,7 +83,10 @@ export function useGetTasks<TData = Awaited<ReturnType<typeof getTasks>>, TError
 /**
  * @summary Get all task categories
  */
-export const getTasksCategory = (options?: SecondParameter<typeof request>, signal?: AbortSignal) => {
+export const getTasksCategory = (
+  options?: SecondParameter<typeof request>,
+  signal?: AbortSignal,
+) => {
   return request<TaskCategory[]>({ url: `/tasks/category`, method: 'GET', signal }, options)
 }
 
@@ -111,7 +122,10 @@ export type GetTasksCategoryQueryError = unknown
  * @summary Get all task categories
  */
 
-export function useGetTasksCategory<TData = Awaited<ReturnType<typeof getTasksCategory>>, TError = unknown>(
+export function useGetTasksCategory<
+  TData = Awaited<ReturnType<typeof getTasksCategory>>,
+  TError = unknown,
+>(
   options?: {
     query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getTasksCategory>>, TError, TData>>
     request?: SecondParameter<typeof request>
@@ -146,7 +160,10 @@ export const getGetTasksIdQueryKey = (id: MaybeRef<string | undefined | null>) =
   return ['tasks', id] as const
 }
 
-export const getGetTasksIdQueryOptions = <TData = Awaited<ReturnType<typeof getTasksId>>, TError = GetTasksId404>(
+export const getGetTasksIdQueryOptions = <
+  TData = Awaited<ReturnType<typeof getTasksId>>,
+  TError = GetTasksId404,
+>(
   id: MaybeRef<string | undefined | null>,
   options?: {
     query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getTasksId>>, TError, TData>>
@@ -160,11 +177,12 @@ export const getGetTasksIdQueryOptions = <TData = Awaited<ReturnType<typeof getT
   const queryFn: QueryFunction<Awaited<ReturnType<typeof getTasksId>>> = ({ signal }) =>
     getTasksId(id, requestOptions, signal)
 
-  return { queryKey, queryFn, enabled: computed(() => !!unref(id)), ...queryOptions } as UseQueryOptions<
-    Awaited<ReturnType<typeof getTasksId>>,
-    TError,
-    TData
-  >
+  return {
+    queryKey,
+    queryFn,
+    enabled: computed(() => !!unref(id)),
+    ...queryOptions,
+  } as UseQueryOptions<Awaited<ReturnType<typeof getTasksId>>, TError, TData>
 }
 
 export type GetTasksIdQueryResult = NonNullable<Awaited<ReturnType<typeof getTasksId>>>
@@ -174,7 +192,10 @@ export type GetTasksIdQueryError = GetTasksId404
  * @summary Get a task by ID
  */
 
-export function useGetTasksId<TData = Awaited<ReturnType<typeof getTasksId>>, TError = GetTasksId404>(
+export function useGetTasksId<
+  TData = Awaited<ReturnType<typeof getTasksId>>,
+  TError = GetTasksId404,
+>(
   id: MaybeRef<string | undefined | null>,
   options?: {
     query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof getTasksId>>, TError, TData>>

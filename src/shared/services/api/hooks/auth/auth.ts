@@ -47,15 +47,34 @@ export const postLogin = (
   postLoginBody = unref(postLoginBody)
 
   return request<PostLogin200>(
-    { url: `/login`, method: 'POST', headers: { 'Content-Type': 'application/json' }, data: postLoginBody, signal },
+    {
+      url: `/login`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: postLoginBody,
+      signal,
+    },
     options,
   )
 }
 
-export const getPostLoginMutationOptions = <TError = PostLogin401 | PostLogin500, TContext = unknown>(options?: {
-  mutation?: UseMutationOptions<Awaited<ReturnType<typeof postLogin>>, TError, { data: PostLoginBody }, TContext>
+export const getPostLoginMutationOptions = <
+  TError = PostLogin401 | PostLogin500,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof postLogin>>,
+    TError,
+    { data: PostLoginBody },
+    TContext
+  >
   request?: SecondParameter<typeof request>
-}): UseMutationOptions<Awaited<ReturnType<typeof postLogin>>, TError, { data: PostLoginBody }, TContext> => {
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof postLogin>>,
+  TError,
+  { data: PostLoginBody },
+  TContext
+> => {
   const mutationKey = ['postLogin']
   const { mutation: mutationOptions, request: requestOptions } = options
     ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
@@ -63,7 +82,10 @@ export const getPostLoginMutationOptions = <TError = PostLogin401 | PostLogin500
       : { ...options, mutation: { ...options.mutation, mutationKey } }
     : { mutation: { mutationKey }, request: undefined }
 
-  const mutationFn: MutationFunction<Awaited<ReturnType<typeof postLogin>>, { data: PostLoginBody }> = props => {
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof postLogin>>,
+    { data: PostLoginBody }
+  > = props => {
     const { data } = props ?? {}
 
     return postLogin(data, requestOptions)
@@ -81,11 +103,21 @@ export type PostLoginMutationError = PostLogin401 | PostLogin500
  */
 export const usePostLogin = <TError = PostLogin401 | PostLogin500, TContext = unknown>(
   options?: {
-    mutation?: UseMutationOptions<Awaited<ReturnType<typeof postLogin>>, TError, { data: PostLoginBody }, TContext>
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof postLogin>>,
+      TError,
+      { data: PostLoginBody },
+      TContext
+    >
     request?: SecondParameter<typeof request>
   },
   queryClient?: QueryClient,
-): UseMutationReturnType<Awaited<ReturnType<typeof postLogin>>, TError, { data: PostLoginBody }, TContext> => {
+): UseMutationReturnType<
+  Awaited<ReturnType<typeof postLogin>>,
+  TError,
+  { data: PostLoginBody },
+  TContext
+> => {
   const mutationOptions = getPostLoginMutationOptions(options)
 
   return useMutation(mutationOptions, queryClient)
@@ -112,9 +144,14 @@ export const getGetMeQueryOptions = <
 
   const queryKey = getGetMeQueryKey()
 
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof getMe>>> = ({ signal }) => getMe(requestOptions, signal)
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof getMe>>> = ({ signal }) =>
+    getMe(requestOptions, signal)
 
-  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<Awaited<ReturnType<typeof getMe>>, TError, TData>
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof getMe>>,
+    TError,
+    TData
+  >
 }
 
 export type GetMeQueryResult = NonNullable<Awaited<ReturnType<typeof getMe>>>

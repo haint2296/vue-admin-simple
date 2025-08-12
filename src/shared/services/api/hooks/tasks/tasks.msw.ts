@@ -25,7 +25,10 @@ export const getGetTasksResponseMock = (): Task[] =>
       'In Review',
       'Completed',
     ] as const),
-    category: { id: faker.string.uuid(), name: faker.string.alpha({ length: { min: 10, max: 20 } }) },
+    category: {
+      id: faker.string.uuid(),
+      name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+    },
     priority: faker.helpers.arrayElement(['Low', 'Medium', 'High'] as const),
     due_date: `${faker.date.past().toISOString().split('.')[0]}Z`,
     created_at: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -47,7 +50,10 @@ export const getGetTasksResponseMock200 = (): Task[] =>
       'In Review',
       'Completed',
     ] as const),
-    category: { id: faker.string.uuid(), name: faker.string.alpha({ length: { min: 10, max: 20 } }) },
+    category: {
+      id: faker.string.uuid(),
+      name: faker.string.alpha({ length: { min: 10, max: 20 } }),
+    },
     priority: faker.helpers.arrayElement(['Low', 'Medium', 'High'] as const),
     due_date: `${faker.date.past().toISOString().split('.')[0]}Z`,
     created_at: `${faker.date.past().toISOString().split('.')[0]}Z`,
@@ -110,13 +116,20 @@ export const getGetTasksIdResponseMock200 = (overrideResponse: Partial<Task> = {
   ...overrideResponse,
 })
 
-export const getGetTasksIdResponseMock404 = (overrideResponse: Partial<GetTasksId404> = {}): GetTasksId404 => ({
-  message: faker.helpers.arrayElement([faker.string.alpha({ length: { min: 10, max: 20 } }), undefined]),
+export const getGetTasksIdResponseMock404 = (
+  overrideResponse: Partial<GetTasksId404> = {},
+): GetTasksId404 => ({
+  message: faker.helpers.arrayElement([
+    faker.string.alpha({ length: { min: 10, max: 20 } }),
+    undefined,
+  ]),
   ...overrideResponse,
 })
 
 export const getGetTasksMockHandler = (
-  overrideResponse?: Task[] | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Task[]> | Task[]),
+  overrideResponse?:
+    | Task[]
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Task[]> | Task[]),
 ) => {
   return http.get('*/tasks', async info => {
     await delay(1000)
@@ -135,7 +148,9 @@ export const getGetTasksMockHandler = (
 }
 
 export const getGetTasksMockHandler200 = (
-  overrideResponse?: Task[] | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Task[]> | Task[]),
+  overrideResponse?:
+    | Task[]
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Task[]> | Task[]),
 ) => {
   return http.get('*/tasks', async info => {
     await delay(1000)
@@ -156,7 +171,9 @@ export const getGetTasksMockHandler200 = (
 export const getGetTasksCategoryMockHandler = (
   overrideResponse?:
     | TaskCategory[]
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<TaskCategory[]> | TaskCategory[]),
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0],
+      ) => Promise<TaskCategory[]> | TaskCategory[]),
 ) => {
   return http.get('*/tasks/category', async info => {
     await delay(1000)
@@ -177,7 +194,9 @@ export const getGetTasksCategoryMockHandler = (
 export const getGetTasksCategoryMockHandler200 = (
   overrideResponse?:
     | TaskCategory[]
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<TaskCategory[]> | TaskCategory[]),
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0],
+      ) => Promise<TaskCategory[]> | TaskCategory[]),
 ) => {
   return http.get('*/tasks/category', async info => {
     await delay(1000)
@@ -196,7 +215,9 @@ export const getGetTasksCategoryMockHandler200 = (
 }
 
 export const getGetTasksIdMockHandler = (
-  overrideResponse?: Task | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Task> | Task),
+  overrideResponse?:
+    | Task
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Task> | Task),
 ) => {
   return http.get('*/tasks/:id', async info => {
     await delay(1000)
@@ -215,7 +236,9 @@ export const getGetTasksIdMockHandler = (
 }
 
 export const getGetTasksIdMockHandler200 = (
-  overrideResponse?: Task | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Task> | Task),
+  overrideResponse?:
+    | Task
+    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Task> | Task),
 ) => {
   return http.get('*/tasks/:id', async info => {
     await delay(1000)
@@ -236,7 +259,9 @@ export const getGetTasksIdMockHandler200 = (
 export const getGetTasksIdMockHandler404 = (
   overrideResponse?:
     | GetTasksId404
-    | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<GetTasksId404> | GetTasksId404),
+    | ((
+        info: Parameters<Parameters<typeof http.get>[1]>[0],
+      ) => Promise<GetTasksId404> | GetTasksId404),
 ) => {
   return http.get('*/tasks/:id', async info => {
     await delay(1000)

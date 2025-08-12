@@ -1,1 +1,1 @@
-export type { Breadcrumbs } from '@/features/breadcrumb/breadcrumb.types'
+export type { Breadcrumbs } from './breadcrumb.types'

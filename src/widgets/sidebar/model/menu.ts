@@ -1,4 +1,13 @@
-import { Bell, Home, ListCheck, Palette, Settings, ShoppingBasket, UserRoundCog, Users } from 'lucide-vue-next'
+import {
+  Bell,
+  Home,
+  ListCheck,
+  Palette,
+  Settings,
+  ShoppingBasket,
+  UserRoundCog,
+  Users,
+} from 'lucide-vue-next'
 
 const sidebarContents = [
   {
