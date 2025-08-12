@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import { AuthLoginForm } from '@/features/auth'
+import { useLoadingStore } from '@/features/loading'
+
+const loadingStore = useLoadingStore()
+
+loadingStore.closeLoading()
 </script>
 
 <template>

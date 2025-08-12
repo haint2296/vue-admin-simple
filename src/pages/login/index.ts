@@ -1,1 +1,1 @@
-export { loginRoute } from './route'
+export { loginRoute } from './login.route'
