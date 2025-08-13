@@ -41,6 +41,7 @@ const headerPanelClick = () => {
   >
     <div class="flex w-full min-w-0 items-center gap-2">
       <ContentMenuItemIcon
+        v-if="icon"
         :icon="icon"
         :title="title"
         :subMenus="items"
