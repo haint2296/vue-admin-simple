@@ -9,6 +9,7 @@ import type { SidebarContentMenuItem } from '../../types'
  */
 import { Panel } from 'primevue'
 import ContentMenuItemButton from './content-menu-item-button.ui.vue'
+import ContentMenuItemLink from './content-menu-item-link.ui.vue'
 /**
  * This component must be used within a SidebarContentMenu.
  */
@@ -63,10 +64,7 @@ const panelCollapsed = computed({
         v-for="item in props.menu.subMenus"
         :key="item.title"
       >
-        <ContentMenuItemButton
-          :title="item.title"
-          :url="item.url || ''"
-        />
+        <ContentMenuItemLink :menu="item" />
       </li>
     </ul>
   </Panel>

@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useSidebarMenuContext } from '../../context'
 import type { SidebarContentMenuItem } from '../../types'
-import ContentMenuItemButton from './content-menu-item-button.ui.vue'
+import ContentMenuItemLink from './content-menu-item-link.ui.vue'
 import ContentMenuItemPanel from './content-menu-item-panel.ui.vue'
 
 /**
@@ -25,12 +25,9 @@ const dropdown = computed(() => {
 
 <template>
   <li class="w-min-0 relative w-full truncate !text-sm">
-    <ContentMenuItemButton
-      class="!px-2"
+    <ContentMenuItemLink
       v-if="!dropdown"
-      :title="props.menu.title"
-      :icon="props.menu.icon || 'div'"
-      :url="props.menu.url || ''"
+      :menu="props.menu"
     />
     <ContentMenuItemPanel
       v-else

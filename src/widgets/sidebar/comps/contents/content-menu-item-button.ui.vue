@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { Button, Menu } from 'primevue'
+import { Button } from 'primevue'
 import type { Component } from 'vue'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useSidebarStore } from '../../store/sidebar.store'
 import type { SidebarContentMenuItemProps } from '../../types'
+import ContentMenuItemIcon from './content-menu-item-icon.ui.vue'
 
 import { ChevronDown, ChevronRight } from 'lucide-vue-next'
 
@@ -18,21 +19,9 @@ interface Props {
 }
 const sidebarStore = useSidebarStore()
 const props = defineProps<Props>()
-const showCompact = computed(() => !sidebarStore.open && !sidebarStore.isMobile)
+
 const isPanelOpened = computed(() => {
   return sidebarStore.panelOpened.includes(props.keyPanel || '')
-})
-
-const menu = ref()
-
-const subMenu = computed(() => {
-  if (!props.items) return []
-
-  return props.items.map(item => {
-    return {
-      label: item.title,
-    }
-  })
 })
 
 const headerPanelClick = () => {
@@ -40,13 +29,6 @@ const headerPanelClick = () => {
     sidebarStore.togglePanel(props.title || '')
     return
   }
-}
-
-const headerIconPanelClick = (event: Event) => {
-  if (sidebarStore.isMobile || sidebarStore.open) return
-  if (!subMenu.value.length) return
-
-  menu.value?.toggle(event)
 }
 </script>
 
@@ -58,38 +40,11 @@ const headerIconPanelClick = (event: Event) => {
     }"
   >
     <div class="flex w-full min-w-0 items-center gap-2">
-      <template v-if="props.icon">
-        <span
-          v-tooltip="{
-            value: props.title,
-            position: 'right',
-            appendTo: 'body',
-            class: '!text-sm',
-            disabled: !showCompact,
-          }"
-          class="inline-flex shrink-0"
-          @click.stop="headerIconPanelClick"
-        >
-          <component
-            v-if="props.icon"
-            :is="props.icon"
-            class="h-4 w-4 flex-shrink-0"
-          />
-        </span>
-        <Menu
-          ref="menu"
-          popup
-          :model="subMenu"
-          :pt="{ root: { class: 'ml-5 !-mt-2' } }"
-          append-to="body"
-        >
-          <template #item="{ item }">
-            <div class="flex cursor-pointer flex-col gap-2 rounded-xl px-2 py-2 text-sm">
-              <span>{{ item.label }}</span>
-            </div>
-          </template>
-        </Menu>
-      </template>
+      <ContentMenuItemIcon
+        :icon="icon"
+        :title="title"
+        :subMenus="items"
+      />
       <div
         class="flex flex-1 cursor-pointer items-center gap-2"
         @click.stop="headerPanelClick"
